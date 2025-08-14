@@ -8,6 +8,15 @@ const socialLinks = [
   { name: 'Instagram', icon: (props: any) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>, url: '#' },
 ];
 
+const quickLinks = [
+    { name: 'ETLAB', url: '#' },
+    { name: 'TKMCE', url: '#' },
+    { name: 'TKMCE AI', url: '#' },
+    { name: 'KTU', url: '#' },
+    { name: 'KTU Login', url: '#' },
+    { name: 'DTE', url: '#' },
+];
+
 export function Footer() {
   return (
     <footer className="bg-secondary text-secondary-foreground">
@@ -20,10 +29,13 @@ export function Footer() {
           <div>
             <h3 className="font-headline text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#home" className="hover:text-primary transition-colors text-muted-foreground">Home</a></li>
-              <li><a href="#faculty" className="hover:text-primary transition-colors text-muted-foreground">Faculty</a></li>
-              <li><a href="#projects" className="hover:text-primary transition-colors text-muted-foreground">Projects</a></li>
-              <li><a href="#contact" className="hover:text-primary transition-colors text-muted-foreground">Contact</a></li>
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors text-muted-foreground">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
