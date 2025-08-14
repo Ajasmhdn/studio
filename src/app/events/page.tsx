@@ -7,7 +7,9 @@ export default function EventsPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <PlaceholderSection id="events" title="Events & Media" />
+        <PlaceholderSection id="events" title="Events" />
+        <PlaceholderSection id="in-news" title="In the News" />
+        <PlaceholderSection id="workshops" title="Workshops" />
       </main>
       <Footer />
     </div>

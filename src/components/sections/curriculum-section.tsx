@@ -49,7 +49,7 @@ const curriculumData: Curriculum[] = [
 
 export function CurriculumSection() {
   return (
-    <section id="curriculum" className="py-16 lg:py-24">
+    <section id="materials" className="py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">Curriculum & Materials</h2>

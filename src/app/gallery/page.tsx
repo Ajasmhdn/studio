@@ -7,7 +7,8 @@ export default function GalleryPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <PlaceholderSection id="gallery" title="Gallery & Downloads" />
+        <PlaceholderSection id="gallery" title="Gallery" />
+        <PlaceholderSection id="downloads" title="Downloads" />
       </main>
       <Footer />
     </div>

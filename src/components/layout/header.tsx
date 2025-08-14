@@ -8,6 +8,16 @@ import {
   Users,
   BookOpen,
   FileText,
+  Lightbulb,
+  Trophy,
+  Handshake,
+  Calendar,
+  Newspaper,
+  Presentation,
+  GalleryHorizontal,
+  Download,
+  Computer,
+  Building2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,9 +25,14 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuPortal,
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Logo } from './logo';
+import { ThemeSwitcher } from '../theme-switcher';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -26,27 +41,67 @@ const navLinks = [
     label: 'Faculty',
     dropdown: [
       { href: '/faculty#faculty', label: 'Faculty', icon: Users },
-      { href: '/faculty#associating-faculty', label: 'Associating Faculty', icon: Users },
+      { href: '/faculty#associating-faculty', label: 'Associates', icon: Building2 },
     ],
   },
   {
-    href: '/materials',
-    label: 'Materials & Curriculum',
+    href: '/curriculum',
+    label: 'Curriculum',
     dropdown: [
-      { href: '/materials#curriculum', label: 'Curriculum', icon: BookOpen },
-      { href: '/materials#publications', label: 'Publications', icon: FileText },
+      { href: '/curriculum#materials', label: 'Materials', icon: BookOpen },
+      { href: '/curriculum#syllabus', label: 'Syllabus', icon: FileText },
     ],
   },
-  { href: '/projects', label: 'Projects' },
-  { href: '/mou', label: 'MoU' },
-  { href: '/placements', label: 'Placements & Achievements' },
-  { href: '/events', label: 'Events & Media' },
-  { href: '/gallery', label: 'Gallery & Downloads' },
+  { href: '/publications', label: 'Publications' },
+  {
+    href: '/projects',
+    label: 'Projects',
+    dropdown: [
+      { href: '/projects#hpc', label: 'HPC', icon: Computer },
+      {
+        label: 'Projects',
+        icon: Lightbulb,
+        submenu: [
+          { href: '/projects#2023-25', label: 'Batch 2023–25' },
+          { href: '/projects#2022-24', label: 'Batch 2022–24' },
+          { href: '/projects#2021-23', label: 'Batch 2021–23' },
+          { href: '/projects#2020-22', label: 'Batch 2020–22' },
+        ]
+      },
+    ],
+  },
+  {
+    href: '/achievements',
+    label: 'MoU & Achievements',
+    dropdown: [
+      { href: '/achievements#mou', label: 'MoU', icon: Handshake },
+      { href: '/achievements#placements', label: 'Placements', icon: Trophy },
+      { href: '/achievements#students', label: 'Students', icon: Users },
+    ],
+  },
+  {
+    href: '/events',
+    label: 'Events',
+    dropdown: [
+      { href: '/events#events', label: 'Events', icon: Calendar },
+      { href: '/events#in-news', label: 'In News', icon: Newspaper },
+      { href: '/events#workshops', label: 'Workshops', icon: Presentation },
+    ],
+  },
+  {
+    href: '/gallery',
+    label: 'Gallery & Downloads',
+    dropdown: [
+      { href: '/gallery#gallery', label: 'Gallery', icon: GalleryHorizontal },
+      { href: '/gallery#downloads', label: 'Downloads', icon: Download },
+    ],
+  },
   { href: '/contact', label: 'Contact' },
 ];
 
-const NavLink = ({ href, label, dropdown }: { href: string; label: string; dropdown?: { href: string; label: string; icon: React.ElementType }[] }) => {
-  if (dropdown) {
+
+const NavLink = ({ item }: { item: any }) => {
+  if (item.dropdown) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -54,31 +109,52 @@ const NavLink = ({ href, label, dropdown }: { href: string; label: string; dropd
             variant="ghost"
             className="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-foreground"
           >
-            {label}
+            {item.label}
             <ChevronDown className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {dropdown.map((item) => (
-            <DropdownMenuItem key={item.href} asChild>
-              <Link href={item.href} className="flex items-center gap-2">
-                <item.icon className="h-4 w-4 text-muted-foreground" />
-                <span>{item.label}</span>
-              </Link>
-            </DropdownMenuItem>
+          {item.dropdown.map((subItem: any) => (
+            subItem.submenu ? (
+               <DropdownMenuSub key={subItem.label}>
+                <DropdownMenuSubTrigger>
+                  <subItem.icon className="h-4 w-4 text-muted-foreground mr-2" />
+                  <span>{subItem.label}</span>
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    {subItem.submenu.map((menuItem: any) => (
+                      <DropdownMenuItem key={menuItem.href} asChild>
+                        <Link href={menuItem.href} className="flex items-center gap-2">
+                           <span>{menuItem.label}</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+            ) : (
+              <DropdownMenuItem key={subItem.href} asChild>
+                <Link href={subItem.href} className="flex items-center gap-2">
+                  <subItem.icon className="h-4 w-4 text-muted-foreground" />
+                  <span>{subItem.label}</span>
+                </Link>
+              </DropdownMenuItem>
+            )
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
     );
   }
   return (
-    <Link href={href}>
+    <Link href={item.href}>
       <Button variant="ghost" className="text-sm font-medium text-foreground/80 hover:text-foreground">
-        {label}
+        {item.label}
       </Button>
     </Link>
   );
 };
+
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,58 +167,82 @@ export function Header() {
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
-            <NavLink key={link.href} {...link} />
+            <NavLink key={link.href || link.label} item={link} />
           ))}
         </nav>
-        <div className="lg:hidden">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px]">
-              <div className="p-4">
-                <div className="mb-8">
-                   <Link href="/" onClick={() => setIsOpen(false)}>
-                    <Logo />
-                  </Link>
-                </div>
-                <nav className="flex flex-col gap-2">
-                  {navLinks.map((link) =>
-                    link.dropdown ? (
-                      <div key={link.href} className="flex flex-col gap-2">
-                        <Link href={link.href} onClick={() => setIsOpen(false)} className="p-2 text-lg rounded-md hover:bg-accent font-semibold">{link.label}</Link>
-                        <div className="flex flex-col gap-1 pl-4 border-l">
-                          {link.dropdown.map(item => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              <item.icon className="h-5 w-5 text-muted-foreground" />
-                              <span>{item.label}</span>
-                            </Link>
-                          ))}
+        <div className="flex items-center gap-2">
+          <ThemeSwitcher />
+          <div className="lg:hidden">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px]">
+                <div className="p-4">
+                  <div className="mb-8">
+                     <Link href="/" onClick={() => setIsOpen(false)}>
+                      <Logo />
+                    </Link>
+                  </div>
+                  <nav className="flex flex-col gap-2">
+                    {navLinks.map((link) =>
+                      link.dropdown ? (
+                        <div key={link.label} className="flex flex-col gap-2">
+                           <Link href={link.href} onClick={() => setIsOpen(false)} className="p-2 text-lg rounded-md hover:bg-accent font-semibold">{link.label}</Link>
+                           <div className="flex flex-col gap-1 pl-4 border-l">
+                            {link.dropdown.map(item => (
+                              item.submenu ? (
+                                <div key={item.label}>
+                                  <span className="flex items-center gap-3 p-2 rounded-md font-medium">
+                                    <item.icon className="h-5 w-5 text-muted-foreground" />
+                                    <span>{item.label}</span>
+                                  </span>
+                                  <div className="flex flex-col gap-1 pl-4 border-l ml-3">
+                                    {item.submenu.map((subItem: any) => (
+                                       <Link
+                                        key={subItem.href}
+                                        href={subItem.href}
+                                        className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        <span>- {subItem.label}</span>
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ) : (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  <item.icon className="h-5 w-5 text-muted-foreground" />
+                                  <span>{item.label}</span>
+                                </Link>
+                              )
+                            ))}
+                           </div>
                         </div>
-                      </div>
-                    ) : (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="p-2 text-lg rounded-md hover:bg-accent"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    )
-                  )}
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+                      ) : (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="p-2 text-lg rounded-md hover:bg-accent font-semibold"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      )
+                    )}
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
