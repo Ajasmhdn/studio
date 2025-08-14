@@ -36,17 +36,17 @@ export function SpotlightSection() {
               initial="offscreen"
               whileInView="onscreen"
               viewport={{ once: true, amount: 0.3 }}
+              variants={cardVariants}
               transition={{ delay: index * 0.2 }}
             >
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <CardContent className="p-0">
-                  <div className="w-full h-full flex justify-center items-center">
+                <CardContent className="p-2">
+                  <div className="relative aspect-[1/1.414]"> {/* A4 paper aspect ratio */}
                     <Image
                       src={url}
                       alt={`Spotlight Poster ${index + 1}`}
-                      width={800}
-                      height={1120}
-                      className="object-contain w-full h-auto"
+                      fill
+                      className="object-contain"
                     />
                   </div>
                 </CardContent>
