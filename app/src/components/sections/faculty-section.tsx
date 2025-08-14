@@ -19,7 +19,7 @@ const facultyData: FacultyMember[] = [
     phone: '9895316268',
     tkmProfileUrl: '#',
     linkedinUrl: '#',
-    photoUrl: 'https://placehold.co/400x400.png',
+    photoUrl: 'https://i.ibb.co/6bs2wVq/placeholder-400x400.png',
     dataAiHint: 'male professor professional',
     category: 'Regular'
   },
@@ -34,7 +34,7 @@ const facultyData: FacultyMember[] = [
     tkmProfileUrl: '#',
     websiteUrl: '#',
     linkedinUrl: '#',
-    photoUrl: 'https://placehold.co/400x400.png',
+    photoUrl: 'https://i.ibb.co/6bs2wVq/placeholder-400x400.png',
     dataAiHint: 'male teacher portrait',
     category: 'Regular'
   },
@@ -48,7 +48,7 @@ const facultyData: FacultyMember[] = [
     phone: '9446225465',
     tkmProfileUrl: '#',
     linkedinUrl: '#',
-    photoUrl: 'https://placehold.co/400x400.png',
+    photoUrl: 'https://i.ibb.co/6bs2wVq/placeholder-400x400.png',
     dataAiHint: 'female researcher smiling',
     category: 'Regular'
   },
@@ -62,7 +62,7 @@ const facultyData: FacultyMember[] = [
     phone: '9061414992',
     tkmProfileUrl: '#',
     linkedinUrl: '#',
-    photoUrl: 'https://placehold.co/400x400.png',
+    photoUrl: 'https://i.ibb.co/6bs2wVq/placeholder-400x400.png',
     dataAiHint: 'professional woman glasses',
     category: 'Regular'
   },
@@ -74,7 +74,7 @@ const facultyData: FacultyMember[] = [
     areasOfInterest: [],
     email: '#',
     tkmProfileUrl: '#',
-    photoUrl: 'https://placehold.co/400x400.png',
+    photoUrl: 'https://i.ibb.co/6bs2wVq/placeholder-400x400.png',
     dataAiHint: 'female professor headshot',
     category: 'Honorary'
   },
