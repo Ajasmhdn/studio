@@ -40,7 +40,9 @@ export async function submitContactForm(prevState: any, formData: FormData) {
   } catch(error) {
      console.error("Error writing document: ", error);
      return {
-      errors: null,
+      errors: {
+        _form: ['There was an error sending your message. Please try again later.'],
+      },
       message: 'There was an error sending your message. Please try again later.',
      }
   }
