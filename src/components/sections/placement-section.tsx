@@ -1,5 +1,6 @@
+'use client';
+
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
 
 const companies = [
   { name: 'Tata', logoUrl: 'https://placehold.co/150x60.png?text=Tata' },
