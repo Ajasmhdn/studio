@@ -58,16 +58,10 @@ const navLinks = [
     label: 'Projects',
     dropdown: [
       { href: '/projects#hpc', label: 'HPC', icon: Computer },
-      {
-        label: 'Projects',
-        icon: Lightbulb,
-        submenu: [
-          { href: '/projects#2023-25', label: 'Batch 2023–25' },
-          { href: '/projects#2022-24', label: 'Batch 2022–24' },
-          { href: '/projects#2021-23', label: 'Batch 2021–23' },
-          { href: '/projects#2020-22', label: 'Batch 2020–22' },
-        ]
-      },
+      { href: '/projects#2023-25', label: 'Batch 2023–25', icon: Lightbulb },
+      { href: '/projects#2022-24', label: 'Batch 2022–24', icon: Lightbulb },
+      { href: '/projects#2021-23', label: 'Batch 2021–23', icon: Lightbulb },
+      { href: '/projects#2020-22', label: 'Batch 2020–22', icon: Lightbulb },
     ],
   },
   {
