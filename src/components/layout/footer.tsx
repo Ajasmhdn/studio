@@ -13,8 +13,6 @@ const quickLinks = [
     { name: 'TKMCE', url: '#' },
     { name: 'TKMCE AI', url: '#' },
     { name: 'KTU', url: '#' },
-    { name: 'KTU Login', url: '#' },
-    { name: 'DTE', url: '#' },
 ];
 
 export function Footer() {
