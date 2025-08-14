@@ -1,6 +1,8 @@
 'use server';
 
 import { z } from 'zod';
+import { firestore } from '@/lib/firebase';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 const contactSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -24,13 +26,22 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     };
   }
 
-  // Here you would typically save to a database like Firebase Firestore.
-  // For this example, we'll just log it and return a success message.
-  console.log('Contact form submitted:');
-  console.log(validatedFields.data);
-
-  return {
-    message: 'Thank you for your message! We will get back to you soon.',
-    errors: null,
-  };
+  try {
+    const contactCollection = collection(firestore, 'contact-us');
+    await addDoc(contactCollection, {
+      ...validatedFields.data,
+      submittedAt: serverTimestamp(),
+    });
+    
+    return {
+      message: 'Thank you for your message! We will get back to you soon.',
+      errors: null,
+    };
+  } catch(error) {
+     console.error("Error writing document: ", error);
+     return {
+      errors: null,
+      message: 'There was an error sending your message. Please try again later.',
+     }
+  }
 }
