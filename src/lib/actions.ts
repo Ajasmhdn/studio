@@ -1,8 +1,6 @@
 'use server';
 
 import { z } from 'zod';
-import { firestore } from '@/lib/firebase';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 const contactSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -25,25 +23,23 @@ export async function submitContactForm(prevState: any, formData: FormData) {
       message: 'Please correct the errors below.',
     };
   }
+  
+  // This is a mock submission. In a real application, you would send this data to a server.
+  console.log('Form data submitted:', validatedFields.data);
+  await new Promise(resolve => setTimeout(resolve, 1000));
 
-  try {
-    const contactCollection = collection(firestore, 'Contactus');
-    await addDoc(contactCollection, {
-      ...validatedFields.data,
-      submittedAt: serverTimestamp(),
-    });
-    
-    return {
-      message: 'Thank you for your message! We will get back to you soon.',
-      errors: null,
-    };
-  } catch(error) {
-     console.error("Error writing document: ", error);
-     return {
-      errors: {
-        _form: ['There was an error sending your message. Please try again later.'],
-      },
-      message: 'There was an error sending your message. Please try again later.',
-     }
-  }
+  // Simulate an error for demonstration purposes occasionally
+  // if (Math.random() > 0.5) {
+  //    return {
+  //     errors: {
+  //       _form: ['There was an error sending your message. Please try again later.'],
+  //     },
+  //     message: 'There was an error sending your message. Please try again later.',
+  //    }
+  // }
+  
+  return {
+    message: 'Thank you for your message! We will get back to you soon.',
+    errors: null,
+  };
 }
