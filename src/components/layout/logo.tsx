@@ -13,7 +13,7 @@ export function Logo() {
         className="object-contain"
         priority
       />
-       <span className="font-headline text-xl font-bold text-foreground">
+       <span className="font-headline text-lg font-bold text-foreground">
         AITKMCE
       </span>
     </div>
