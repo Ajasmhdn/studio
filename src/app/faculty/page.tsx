@@ -1,13 +1,13 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { HeroSection } from "@/components/sections/hero-section";
+import { FacultySection } from "@/components/sections/faculty-section";
 
-export default function Home() {
+export default function FacultyPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <HeroSection />
+        <FacultySection />
       </main>
       <Footer />
     </div>

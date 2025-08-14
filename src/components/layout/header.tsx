@@ -20,29 +20,29 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Logo } from './logo';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
+  { href: '/', label: 'Home' },
   {
-    href: '#faculty',
+    href: '/faculty',
     label: 'Faculty',
     dropdown: [
-      { href: '#faculty', label: 'Faculty', icon: Users },
-      { href: '#associating-faculty', label: 'Associating Faculty', icon: Users },
+      { href: '/faculty#faculty', label: 'Faculty', icon: Users },
+      { href: '/faculty#associating-faculty', label: 'Associating Faculty', icon: Users },
     ],
   },
   {
-    href: '#curriculum',
+    href: '/materials',
     label: 'Materials & Curriculum',
     dropdown: [
-      { href: '#curriculum', label: 'Curriculum', icon: BookOpen },
-      { href: '#publications', label: 'Publications', icon: FileText },
+      { href: '/materials#curriculum', label: 'Curriculum', icon: BookOpen },
+      { href: '/materials#publications', label: 'Publications', icon: FileText },
     ],
   },
-  { href: '#projects', label: 'Projects' },
-  { href: '#mou', label: 'MoU' },
-  { href: '#placements', label: 'Placements & Achievements' },
-  { href: '#events', label: 'Events & Media' },
-  { href: '#gallery', label: 'Gallery & Downloads' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/mou', label: 'MoU' },
+  { href: '/placements', label: 'Placements & Achievements' },
+  { href: '/events', label: 'Events & Media' },
+  { href: '/gallery', label: 'Gallery & Downloads' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const NavLink = ({ href, label, dropdown }: { href: string; label: string; dropdown?: { href: string; label: string; icon: React.ElementType }[] }) => {
@@ -86,7 +86,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
             <NavLink key={link.href} {...link} />
@@ -103,24 +105,28 @@ export function Header() {
             <SheetContent side="right" className="w-[300px]">
               <div className="p-4">
                 <div className="mb-8">
-                  <Logo />
+                   <Link href="/" onClick={() => setIsOpen(false)}>
+                    <Logo />
+                  </Link>
                 </div>
                 <nav className="flex flex-col gap-2">
                   {navLinks.map((link) =>
                     link.dropdown ? (
                       <div key={link.href} className="flex flex-col gap-2">
-                        <h4 className="font-semibold text-foreground/80 px-2">{link.label}</h4>
-                        {link.dropdown.map(item => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
-                            onClick={() => setIsOpen(false)}
-                          >
-                             <item.icon className="h-5 w-5 text-muted-foreground" />
-                            <span>{item.label}</span>
-                          </Link>
-                        ))}
+                        <Link href={link.href} onClick={() => setIsOpen(false)} className="p-2 text-lg rounded-md hover:bg-accent font-semibold">{link.label}</Link>
+                        <div className="flex flex-col gap-1 pl-4 border-l">
+                          {link.dropdown.map(item => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <item.icon className="h-5 w-5 text-muted-foreground" />
+                              <span>{item.label}</span>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     ) : (
                       <Link
