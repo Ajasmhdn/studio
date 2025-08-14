@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Image from 'next/image';
 
@@ -13,7 +13,7 @@ export function Logo() {
         className="object-contain"
         priority
       />
-       <span className="font-headline text-lg font-bold text-foreground">
+      <span className="font-headline text-base font-bold text-foreground">
         AITKMCE
       </span>
     </div>
