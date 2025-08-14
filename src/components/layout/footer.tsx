@@ -39,7 +39,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0 text-primary" />
-                <a href="mailto:info@tkmce.ac.in" className="hover:text-primary transition-colors text-muted-foreground">info@tkmce.ac.in</a>
+                <a href="mailto:principal@tkmce.ac.in" className="hover:text-primary transition-colors text-muted-foreground">principal@tkmce.ac.in</a>
               </li>
             </ul>
           </div>

@@ -104,7 +104,7 @@ export function ContactSection() {
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center"><Mail className="h-5 w-5 text-primary" /></div>
                 <div>
                   <h3 className="font-semibold">Email</h3>
-                  <a href="mailto:info@tkmce.ac.in" className="text-muted-foreground hover:text-primary transition-colors">info@tkmce.ac.in</a>
+                  <a href="mailto:principal@tkmce.ac.in" className="text-muted-foreground hover:text-primary transition-colors">principal@tkmce.ac.in</a>
                 </div>
               </li>
             </ul>
