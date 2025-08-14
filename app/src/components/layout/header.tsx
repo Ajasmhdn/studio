@@ -40,16 +40,16 @@ const navLinks = [
     href: '/faculty',
     label: 'Faculty',
     dropdown: [
-      { href: '/faculty#faculty', label: 'Faculty', icon: Users },
-      { href: '/faculty#associating-faculty', label: 'Associates', icon: Building2 },
+      { href: '#faculty', label: 'Faculty', icon: Users },
+      { href: '#associating-faculty', label: 'Associates', icon: Building2 },
     ],
   },
   {
     href: '/curriculum',
     label: 'Curriculum',
     dropdown: [
-      { href: '/curriculum#materials', label: 'Materials', icon: BookOpen },
-      { href: '/curriculum#syllabus', label: 'Syllabus', icon: FileText },
+      { href: '#materials', label: 'Materials', icon: BookOpen },
+      { href: '#syllabus', label: 'Syllabus', icon: FileText },
     ],
   },
   { href: '/publications', label: 'Publications' },
@@ -57,44 +57,70 @@ const navLinks = [
     href: '/projects',
     label: 'Projects',
     dropdown: [
-      { href: '/projects#2023-25', label: 'Batch 2023–25', icon: Lightbulb },
-      { href: '/projects#2022-24', label: 'Batch 2022–24', icon: Lightbulb },
-      { href: '/projects#2021-23', label: 'Batch 2021–23', icon: Lightbulb },
-      { href: '/projects#2020-22', label: 'Batch 2020–22', icon: Lightbulb },
+      { href: '#2023-25', label: 'Batch 2023–25', icon: Lightbulb },
+      { href: '#2022-24', label: 'Batch 2022–24', icon: Lightbulb },
+      { href: '#2021-23', label: 'Batch 2021–23', icon: Lightbulb },
+      { href: '#2020-22', label: 'Batch 2020–22', icon: Lightbulb },
     ],
   },
   {
     href: '/achievements',
     label: 'MoU & Achievements',
     dropdown: [
-      { href: '/achievements#mou', label: 'MoU', icon: Handshake },
-      { href: '/achievements#placements', label: 'Placements', icon: Trophy },
-      { href: '/achievements#students', label: 'Students', icon: Users },
+      { href: '#mou', label: 'MoU', icon: Handshake },
+      { href: '#placements', label: 'Placements', icon: Trophy },
+      { href: '#students', label: 'Students', icon: Users },
     ],
   },
   {
     href: '/events',
     label: 'Events',
     dropdown: [
-      { href: '/events#events', label: 'Events', icon: Calendar },
-      { href: '/events#in-news', label: 'In News', icon: Newspaper },
-      { href: '/events#workshops', label: 'Workshops', icon: Presentation },
+      { href: '#events', label: 'Events', icon: Calendar },
+      { href: '#in-news', label: 'In News', icon: Newspaper },
+      { href: '#workshops', label: 'Workshops', icon: Presentation },
     ],
   },
   {
     href: '/gallery',
     label: 'Gallery & Downloads',
     dropdown: [
-      { href: '/gallery#gallery', label: 'Gallery', icon: GalleryHorizontal },
-      { href: '/gallery#downloads', label: 'Downloads', icon: Download },
+      { href: '#gallery', label: 'Gallery', icon: GalleryHorizontal },
+      { href: '#downloads', label: 'Downloads', icon: Download },
     ],
   },
   { href: '/contact', label: 'Contact' },
 ];
 
 
-const NavLink = ({ item }: { item: any }) => {
+const NavLink = ({ item, isMobile = false, closeSheet }: { item: any, isMobile?: boolean, closeSheet?: () => void }) => {
+  const handleLinkClick = (href: string) => {
+    if (isMobile && closeSheet) {
+      closeSheet();
+    }
+  };
+
   if (item.dropdown) {
+    if (isMobile) {
+      return (
+        <div className="flex flex-col gap-2">
+          <Link href={item.href} onClick={() => handleLinkClick(item.href)} className="p-2 text-lg rounded-md hover:bg-accent font-semibold">{item.label}</Link>
+          <div className="flex flex-col gap-1 pl-4 border-l">
+            {item.dropdown.map((subItem: any) => (
+              <Link
+                key={subItem.href}
+                href={`${item.href}${subItem.href}`}
+                className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
+                onClick={() => handleLinkClick(`${item.href}${subItem.href}`)}
+              >
+                <subItem.icon className="h-5 w-5 text-muted-foreground" />
+                <span>{subItem.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      );
+    }
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -108,39 +134,20 @@ const NavLink = ({ item }: { item: any }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {item.dropdown.map((subItem: any) => (
-            subItem.submenu ? (
-               <DropdownMenuSub key={subItem.label}>
-                <DropdownMenuSubTrigger>
-                  <subItem.icon className="h-4 w-4 text-muted-foreground mr-2" />
-                  <span>{subItem.label}</span>
-                </DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent>
-                    {subItem.submenu.map((menuItem: any) => (
-                      <DropdownMenuItem key={menuItem.href} asChild>
-                        <Link href={menuItem.href} className="flex items-center gap-2">
-                           <span>{menuItem.label}</span>
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-              </DropdownMenuSub>
-            ) : (
-              <DropdownMenuItem key={subItem.href} asChild>
-                <Link href={subItem.href} className="flex items-center gap-2">
-                  <subItem.icon className="h-4 w-4 text-muted-foreground" />
-                  <span>{subItem.label}</span>
-                </Link>
-              </DropdownMenuItem>
-            )
+            <DropdownMenuItem key={subItem.href} asChild>
+              <Link href={`${item.href}${subItem.href}`} className="flex items-center gap-2">
+                <subItem.icon className="h-4 w-4 text-muted-foreground" />
+                <span>{subItem.label}</span>
+              </Link>
+            </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
     );
   }
+
   return (
-    <Link href={item.href}>
+    <Link href={item.href} onClick={() => handleLinkClick(item.href)}>
       <Button variant="ghost" className="text-sm font-medium text-foreground/80 hover:text-foreground">
         {item.label}
       </Button>
@@ -185,43 +192,7 @@ export function Header() {
                     <nav className="flex flex-col gap-2">
                       {navLinks.map((link) =>
                         link.dropdown ? (
-                          <div key={link.label} className="flex flex-col gap-2">
-                            <Link href={link.href} onClick={() => setIsOpen(false)} className="p-2 text-lg rounded-md hover:bg-accent font-semibold">{link.label}</Link>
-                            <div className="flex flex-col gap-1 pl-4 border-l">
-                              {link.dropdown.map(item => (
-                                item.submenu ? (
-                                  <div key={item.label}>
-                                    <span className="flex items-center gap-3 p-2 rounded-md font-medium">
-                                      <item.icon className="h-5 w-5 text-muted-foreground" />
-                                      <span>{item.label}</span>
-                                    </span>
-                                    <div className="flex flex-col gap-1 pl-4 border-l ml-3">
-                                      {item.submenu.map((subItem: any) => (
-                                        <Link
-                                          key={subItem.href}
-                                          href={subItem.href}
-                                          className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
-                                          onClick={() => setIsOpen(false)}
-                                        >
-                                          <span>- {subItem.label}</span>
-                                        </Link>
-                                      ))}
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    <item.icon className="h-5 w-5 text-muted-foreground" />
-                                    <span>{item.label}</span>
-                                  </Link>
-                                )
-                              ))}
-                            </div>
-                          </div>
+                           <NavLink key={link.label} item={link} isMobile={true} closeSheet={() => setIsOpen(false)} />
                         ) : (
                           <Link
                             key={link.href}
