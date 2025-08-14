@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
-  title: 'TKMCE AI Hub',
+  title: 'AITKMCE',
   description: 'The official hub for AI-related activities at TKM College of Engineering.',
 };
 

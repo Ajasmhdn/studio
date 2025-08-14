@@ -29,7 +29,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuPortal,
 } from '@/components/ui/dropdown-menu';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Logo } from './logo';
 import { ThemeSwitcher } from '../theme-switcher';
 
@@ -173,6 +173,7 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px]">
+                <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                 <div className="p-4">
                   <div className="mb-8">
                      <Link href="/" onClick={() => setIsOpen(false)}>

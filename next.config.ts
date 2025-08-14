@@ -1,13 +1,15 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Ignore TypeScript build errors (optional)
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Ignore ESLint errors during builds (optional)
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Remote image configuration for Next.js Image component
   images: {
     remotePatterns: [
       {
@@ -30,6 +32,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // You can add more Next.js config options here if needed
 };
 
 export default nextConfig;
