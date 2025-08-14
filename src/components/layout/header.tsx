@@ -32,6 +32,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Logo } from './logo';
 import { ThemeSwitcher } from '../theme-switcher';
+import { ScrollArea } from '../ui/scroll-area';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -172,67 +173,69 @@ export function Header() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px]">
+              <SheetContent side="right" className="w-[300px] p-0">
                 <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
-                <div className="p-4">
-                  <div className="mb-8">
-                     <Link href="/" onClick={() => setIsOpen(false)}>
-                      <Logo />
-                    </Link>
-                  </div>
-                  <nav className="flex flex-col gap-2">
-                    {navLinks.map((link) =>
-                      link.dropdown ? (
-                        <div key={link.label} className="flex flex-col gap-2">
-                           <Link href={link.href} onClick={() => setIsOpen(false)} className="p-2 text-lg rounded-md hover:bg-accent font-semibold">{link.label}</Link>
-                           <div className="flex flex-col gap-1 pl-4 border-l">
-                            {link.dropdown.map(item => (
-                              item.submenu ? (
-                                <div key={item.label}>
-                                  <span className="flex items-center gap-3 p-2 rounded-md font-medium">
+                <ScrollArea className="h-full">
+                  <div className="p-4">
+                    <div className="mb-8">
+                      <Link href="/" onClick={() => setIsOpen(false)}>
+                        <Logo />
+                      </Link>
+                    </div>
+                    <nav className="flex flex-col gap-2">
+                      {navLinks.map((link) =>
+                        link.dropdown ? (
+                          <div key={link.label} className="flex flex-col gap-2">
+                            <Link href={link.href} onClick={() => setIsOpen(false)} className="p-2 text-lg rounded-md hover:bg-accent font-semibold">{link.label}</Link>
+                            <div className="flex flex-col gap-1 pl-4 border-l">
+                              {link.dropdown.map(item => (
+                                item.submenu ? (
+                                  <div key={item.label}>
+                                    <span className="flex items-center gap-3 p-2 rounded-md font-medium">
+                                      <item.icon className="h-5 w-5 text-muted-foreground" />
+                                      <span>{item.label}</span>
+                                    </span>
+                                    <div className="flex flex-col gap-1 pl-4 border-l ml-3">
+                                      {item.submenu.map((subItem: any) => (
+                                        <Link
+                                          key={subItem.href}
+                                          href={subItem.href}
+                                          className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
+                                          onClick={() => setIsOpen(false)}
+                                        >
+                                          <span>- {subItem.label}</span>
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
+                                    onClick={() => setIsOpen(false)}
+                                  >
                                     <item.icon className="h-5 w-5 text-muted-foreground" />
                                     <span>{item.label}</span>
-                                  </span>
-                                  <div className="flex flex-col gap-1 pl-4 border-l ml-3">
-                                    {item.submenu.map((subItem: any) => (
-                                       <Link
-                                        key={subItem.href}
-                                        href={subItem.href}
-                                        className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
-                                        onClick={() => setIsOpen(false)}
-                                      >
-                                        <span>- {subItem.label}</span>
-                                      </Link>
-                                    ))}
-                                  </div>
-                                </div>
-                              ) : (
-                                <Link
-                                  key={item.href}
-                                  href={item.href}
-                                  className="flex items-center gap-3 p-2 rounded-md hover:bg-accent"
-                                  onClick={() => setIsOpen(false)}
-                                >
-                                  <item.icon className="h-5 w-5 text-muted-foreground" />
-                                  <span>{item.label}</span>
-                                </Link>
-                              )
-                            ))}
-                           </div>
-                        </div>
-                      ) : (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className="p-2 text-lg rounded-md hover:bg-accent font-semibold"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {link.label}
-                        </Link>
-                      )
-                    )}
-                  </nav>
-                </div>
+                                  </Link>
+                                )
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="p-2 text-lg rounded-md hover:bg-accent font-semibold"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        )
+                      )}
+                    </nav>
+                  </div>
+                </ScrollArea>
               </SheetContent>
             </Sheet>
           </div>
