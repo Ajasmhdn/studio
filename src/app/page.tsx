@@ -5,7 +5,6 @@ import { ResearchAreasSection } from "@/components/sections/research-areas-secti
 import { StatsSection } from "@/components/sections/stats-section";
 import { PlacementSection } from "@/components/sections/placement-section";
 import { MissionVisionSection } from "@/components/sections/mission-vision-section";
-import { SpotlightSection } from "@/components/sections/spotlight-section";
 
 export default function Home() {
   return (
@@ -16,7 +15,6 @@ export default function Home() {
         <StatsSection />
         <MissionVisionSection />
         <ResearchAreasSection />
-        <SpotlightSection />
         <PlacementSection />
       </main>
       <Footer />
