@@ -31,7 +31,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 mt-1 shrink-0 text-primary" />
-                <span className="text-muted-foreground">TKM College of Engineering, Karuvelil, Kollam, Kerala 691005</span>
+                <span className="text-muted-foreground">TKM College of Engineering, Karicode, Kollam-691005, Kerala, India</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 shrink-0 text-primary" />

@@ -90,7 +90,7 @@ export function ContactSection() {
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center"><MapPin className="h-5 w-5 text-primary" /></div>
                 <div>
                   <h3 className="font-semibold">Address</h3>
-                  <p className="text-muted-foreground">TKM College of Engineering, Karuvelil, Kollam, Kerala 691005</p>
+                  <p className="text-muted-foreground">TKM College of Engineering, Karicode, Kollam-691005, Kerala, India</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
