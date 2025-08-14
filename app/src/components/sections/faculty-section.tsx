@@ -112,7 +112,7 @@ const FacultyCard = ({ member }: { member: FacultyMember }) => (
       {member.tkmProfileUrl && <Button asChild size="sm" variant="outline"><a href={member.tkmProfileUrl} target="_blank" rel="noopener noreferrer"><User /> Profile</a></Button>}
       {member.websiteUrl && <Button asChild size="sm" variant="outline"><a href={member.websiteUrl} target="_blank" rel="noopener noreferrer"><LinkIcon /> Website</a></Button>}
       {member.linkedinUrl && <Button asChild size="sm" variant="outline"><a href={member.linkedinUrl} target="_blank" rel="noopener noreferrer"><Linkedin /> LinkedIn</a></Button>}
-      {member.email !== '#' && <Button asChild size="sm" variant="outline"><a href={`mailto:${member.email}`}><Mail /> Email</a></Button>}
+      {member.email && <Button asChild size="sm" variant="outline"><a href={`mailto:${member.email}`}><Mail /> Email</a></Button>}
       {member.phone && <Button asChild size="sm" variant="outline"><a href={`tel:${member.phone}`}><Phone /> Phone</a></Button>}
     </CardFooter>
   </Card>
