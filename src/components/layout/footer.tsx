@@ -15,7 +15,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="flex flex-col gap-4">
             <Logo />
-            <p className="text-sm text-muted-foreground">The official hub for AI-related activities at TKM College of Engineering. Fostering innovation and collaboration in Artificial Intelligence.</p>
+            <p className="text-sm text-muted-foreground">Empowering minds, shaping the future through Artificial Intelligence.</p>
           </div>
           <div>
             <h3 className="font-headline text-lg font-semibold mb-4">Quick Links</h3>
