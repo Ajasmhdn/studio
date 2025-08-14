@@ -27,7 +27,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
   }
 
   try {
-    const contactCollection = collection(firestore, 'contact-us');
+    const contactCollection = collection(firestore, 'Contactus');
     await addDoc(contactCollection, {
       ...validatedFields.data,
       submittedAt: serverTimestamp(),
