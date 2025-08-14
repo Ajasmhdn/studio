@@ -9,6 +9,7 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyBVYFNf9oDr8t4_dWiRjYHE3k2IWl5duD4",
   authDomain: "aitkmce-8948c.firebaseapp.com",
+  databaseURL: "https://aitkmce-8948c-default-rtdb.firebaseio.com",
   projectId: "aitkmce-8948c",
   storageBucket: "aitkmce-8948c.appspot.com",
   messagingSenderId: "1052812044903",
