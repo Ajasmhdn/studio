@@ -16,7 +16,6 @@ import {
   Presentation,
   GalleryHorizontal,
   Download,
-  Computer,
   Building2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -57,7 +56,6 @@ const navLinks = [
     href: '/projects',
     label: 'Projects',
     dropdown: [
-      { href: '/projects#hpc', label: 'HPC', icon: Computer },
       { href: '/projects#2023-25', label: 'Batch 2023–25', icon: Lightbulb },
       { href: '/projects#2022-24', label: 'Batch 2022–24', icon: Lightbulb },
       { href: '/projects#2021-23', label: 'Batch 2021–23', icon: Lightbulb },
