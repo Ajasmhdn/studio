@@ -52,7 +52,6 @@ const navLinks = [
     dropdown: [
       { href: '/curriculum', label: 'Syllabus & Downloads', icon: BookOpen },
       { href: '/syllabus', label: 'Curriculum Overview', icon: FileText },
-      { href: '/hpc', label: 'HPC Facility', icon: Cpu },
     ],
   },
   {
@@ -64,6 +63,7 @@ const navLinks = [
       { href: '/publications', label: 'Publications', icon: BookOpen },
       { href: '/projects', label: 'Projects', icon: Lightbulb },
       { href: '/student-achievements', label: 'Student Achievements', icon: Award },
+      { href: '/hpc', label: 'HPC Facility', icon: Cpu },
     ],
   },
   {
