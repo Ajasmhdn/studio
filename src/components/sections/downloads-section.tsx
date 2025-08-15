@@ -3,6 +3,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Link as LinkIcon, FileText } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const pdfPlaceholder = "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview";
 const pdfDownloadPlaceholder = "https://drive.google.com/uc?export=download&id=1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j";
@@ -106,7 +107,7 @@ const researchLinks = [
 ];
 
 const DownloadCard = ({ item }: { item: DownloadItem }) => (
-  <Card className="flex flex-col overflow-hidden transition-shadow hover:shadow-lg">
+  <Card className="flex flex-col overflow-hidden transition-shadow hover:shadow-lg h-full">
     <div className="aspect-video w-full bg-muted/30 p-4 flex items-center justify-center">
         <div className="aspect-[4/3] w-full max-w-[300px] rounded border bg-white overflow-hidden shadow-sm">
           {item.previewUrl ? (
@@ -125,9 +126,8 @@ const DownloadCard = ({ item }: { item: DownloadItem }) => (
         </div>
       </div>
     <div className="p-6 flex flex-col flex-grow">
-      <h3 className="font-headline text-lg font-semibold mb-2 flex-grow">{item.title}</h3>
-      {item.description && <p className="text-muted-foreground text-sm mb-4 flex-grow">{item.description}</p>}
-      <Button asChild className="mt-4 w-full sm:w-auto self-start">
+      <h3 className="font-headline text-lg font-semibold mb-4 flex-grow">{item.title}</h3>
+      <Button asChild className="mt-auto w-full sm:w-auto self-start">
         <a href={item.downloadUrl} target="_blank" rel="noopener noreferrer">
           <ExternalLink className="mr-2 h-4 w-4" /> View (PDF)
         </a>
@@ -165,7 +165,9 @@ export function DownloadsSection() {
               <h3 className="text-2xl font-bold font-headline mb-6 border-l-4 border-primary pl-4">{section.title}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {section.items.map((item) => (
-                  <DownloadCard key={item.title} item={item} />
+                   <div key={item.title} className={cn(item.title === "S3: Dissertation Guide Interaction Sheet" && "md:col-span-2")}>
+                     <DownloadCard item={item} />
+                   </div>
                 ))}
               </div>
             </div>
