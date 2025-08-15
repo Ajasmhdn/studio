@@ -13,7 +13,7 @@ const socialLinks = [
 const quickLinks = [
     { name: 'ETLAB', url: '#' },
     { name: 'TKMCE', url: '#' },
-    { name: 'Centre for Artificial Intelligence, TKMCE', url: '#' },
+    { name: 'AITKMCE', url: '#' },
     { name: 'KTU', url: '#' },
 ];
 
