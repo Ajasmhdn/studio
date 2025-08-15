@@ -1,10 +1,14 @@
 export interface FacultyMember {
   name: string;
-  designation: string;
-  specialization: string;
+  designation: string; // Title in the user request
   email: string;
   photoUrl: string;
   dataAiHint?: string;
+  phone?: string;
+  profiles?: Record<string, string>;
+  bio?: string;
+  areasOfInterest?: string[];
+  affiliation?: string; // For honorary/associating faculty
 }
 
 export interface Curriculum {
