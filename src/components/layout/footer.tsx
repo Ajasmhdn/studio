@@ -1,6 +1,7 @@
 'use client';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Logo } from './logo';
+import { CurrentYear } from '../current-year';
 
 const socialLinks = [
   { name: 'Facebook', icon: (props: any) => <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>, url: '#' },
@@ -67,7 +68,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-border/50 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} TKMCE AI Hub. All Rights Reserved.</p>
+          <p>&copy; <CurrentYear /> TKMCE AI Hub. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
