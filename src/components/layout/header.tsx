@@ -70,7 +70,7 @@ const navLinks = [
   },
   {
     href: '/events',
-    label: 'Events',
+    label: 'Spotlight',
     dropdown: [
       { href: '/events#events', label: 'Events', icon: Calendar },
       { href: '/events#in-news', label: 'In News', icon: Newspaper },
