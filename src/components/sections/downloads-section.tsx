@@ -71,55 +71,16 @@ const downloadData: DownloadSection[] = [
         title: "Dissertation outside the Institute", 
         downloadUrl: '#', 
         previewUrl: pdfPlaceholder, 
-        collapsibleContent: (
-          <div className="prose prose-sm dark:prose-invert max-w-none p-4 text-muted-foreground space-y-3">
-            <p>They have completed successfully the course work prescribed in the approved curriculum up to the second semester.</p>
-            <p>The student has to get prior approval from the DLAC and CLAC.</p>
-            <p>Facilities required for doing the dissertation shall be available in the Organization/Industry (A certificate stating the facilities available in the proposed organization and the time period for which the facilities shall be made available to the student, issued by a competent authority from the Organization/Industry shall be submitted by the student along with the application).</p>
-            <p>They should have an external as well as an internal supervisor. The internal supervisor should belong to the parent institution and the external supervisor should be Scientists or Engineers from the Institution/Industry/ R&D organization with which the student is associated for doing the dissertation work. The external supervisor shall be with a minimum post graduate degree in the related area.</p>
-            <p>The student has to furnish his /her monthly progress as well as attendance report signed by the external supervisor and submit the same to the concerned Internal supervisor.</p>
-            <p>The external supervisor is to be preferably present during all the stages of evaluation of the dissertation.</p>
-            <p className="font-semibold text-foreground">Required Documents:</p>
-            <ul>
-              <li>Certificate stating the facilities available and time period</li>
-              <li>Attendance Sheet</li>
-              <li>Students Diary</li>
-              <li>Supervisor Evaluation Sheet</li>
-            </ul>
-          </div>
-        )
       },
       { 
         title: "Internship leading to Dissertation", 
         downloadUrl: '#', 
         previewUrl: pdfPlaceholder, 
-        collapsibleContent: (
-          <div className="prose prose-sm dark:prose-invert max-w-none p-4 text-muted-foreground space-y-3">
-            <p>The M. Tech students who after completion of 6 to 8 weeks internship at some reputed organizations are allowed to continue their work as dissertation for the third and fourth semester after getting approval from the CLAC.</p>
-            <p>Such students shall make a brief presentation regarding the work they propose to carry out before the DLAC for a detailed scrutiny and to resolve its suitability for accepting it as an M.Tech dissertation.</p>
-            <p>These students will be continuing as regular students of the Institute in third semester for carrying out all academic requirements as per the curriculum/regulation.</p>
-            <p>However, they will be permitted to complete their dissertation in the Industry/Organization (where they have successfully completed their internship) during fourth semester.</p>
-            <p>They should have an external as well as an internal supervisor. The internal supervisor should belong to the parent institution and the external supervisor should be Scientists or Engineers from the external organization with which the student is associated for doing the dissertation work. The external supervisor shall be with a minimum post graduate degree in the related area.</p>
-            <p>The student has to furnish his /her monthly progress as well as attendance report signed by the external guide and submit the same to the concerned internal guide. The external guide is to be preferably present during all the stages of evaluation of the dissertation.</p>
-            <p className="font-semibold text-foreground">Required Documents:</p>
-            <ul>
-              <li>Certificate stating the facilities available and time period</li>
-              <li>Attendance Sheet</li>
-              <li>Students Diary</li>
-              <li>Supervisor Evaluation Sheet</li>
-            </ul>
-          </div>
-        ) 
       },
       { 
         title: "Dissertation as part of Employment", 
         downloadUrl: '#', 
-        previewUrl: pdfPlaceholder, 
-        collapsibleContent: (
-          <div className="prose prose-sm dark:prose-invert max-w-none p-4 text-muted-foreground">
-            <p>Check S3 Syllabus for Norms.</p>
-          </div>
-        )
+        previewUrl: pdfPlaceholder,
       },
       { title: "S3 Project Details Form", previewUrl: pdfPlaceholder, downloadUrl: pdfDownloadPlaceholder },
       { title: "Dissertation Phase 1 Report Template", previewUrl: pdfPlaceholder, downloadUrl: pdfDownloadPlaceholder },
@@ -164,9 +125,9 @@ const DownloadCard = ({ item }: { item: DownloadItem }) => (
         </div>
       </div>
     <div className="p-6 flex flex-col flex-grow">
-      <h3 className="font-headline text-lg font-semibold mb-2">{item.title}</h3>
+      <h3 className="font-headline text-lg font-semibold mb-2 flex-grow">{item.title}</h3>
       {item.description && <p className="text-muted-foreground text-sm mb-4 flex-grow">{item.description}</p>}
-      <Button asChild className="mt-4 w-full sm:w-auto">
+      <Button asChild className="mt-4 w-full sm:w-auto self-start">
         <a href={item.downloadUrl} target="_blank" rel="noopener noreferrer">
           <ExternalLink className="mr-2 h-4 w-4" /> View (PDF)
         </a>
@@ -233,5 +194,3 @@ export function DownloadsSection() {
     </section>
   );
 }
-
-    
