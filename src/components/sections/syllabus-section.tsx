@@ -1,16 +1,72 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const CourseListItem = ({ name, code, credits, assessment }: { name: string; code?: string; credits: string; assessment: string; }) => (
-  <li className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 rounded-md border bg-card/50 gap-2">
-    <div className="flex-1">
-      <p className="font-medium">{name}</p>
-      {code && <p className="text-sm text-muted-foreground">{code}</p>}
+interface EvaluationDetail {
+  item: string;
+  marks?: string;
+  subItems?: EvaluationDetail[];
+}
+
+interface Course {
+  name: string;
+  code?: string;
+  credits: string;
+  assessment: string;
+  details?: {
+    totalMarks: string;
+    evaluations: EvaluationDetail[];
+  }
+}
+
+const EvaluationDetails = ({ details }: { details: Course['details'] }) => {
+  if (!details) return null;
+
+  const renderDetails = (evalDetails: EvaluationDetail[], level = 0) => (
+    <ul className={level > 0 ? 'pl-6' : ''}>
+      {evalDetails.map((detail, index) => (
+        <li key={index} className="flex justify-between items-start mt-1">
+          <span>{detail.item}</span>
+          {detail.marks && <span className="font-semibold whitespace-nowrap">{detail.marks}</span>}
+          {detail.subItems && (
+            <div className="w-full pl-4">
+              {renderDetails(detail.subItems, level + 1)}
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+
+  return (
+    <Card className="mt-3 bg-card/30">
+      <CardHeader className="p-4">
+        <CardTitle className="text-base font-semibold">Evaluation Breakdown</CardTitle>
+      </CardHeader>
+      <CardContent className="p-4 pt-0 text-sm text-muted-foreground">
+        <div className="flex justify-between items-center font-bold text-foreground mb-2">
+          <span>{details.totalMarks}</span>
+        </div>
+        {renderDetails(details.evaluations)}
+      </CardContent>
+    </Card>
+  );
+};
+
+
+const CourseListItem = (props: Course) => (
+  <li>
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 rounded-md border bg-card/50 gap-2">
+      <div className="flex-1">
+        <p className="font-medium">{props.name}</p>
+        {props.code && <p className="text-sm text-muted-foreground">{props.code}</p>}
+      </div>
+      <div className="flex items-center gap-4 text-sm text-muted-foreground shrink-0">
+        <span>{props.credits}</span>
+        <Badge variant="outline">{props.assessment}</Badge>
+      </div>
     </div>
-    <div className="flex items-center gap-4 text-sm text-muted-foreground">
-      <span>{credits}</span>
-      <Badge variant="outline">{assessment}</Badge>
-    </div>
+    {props.details && <EvaluationDetails details={props.details} />}
   </li>
 );
 
@@ -20,6 +76,126 @@ const ElectiveGroup = ({ title, courses }: { title: string; courses: string[]; }
     <p className="text-muted-foreground text-sm pl-4">{courses.join(', ')} – 3 credits each</p>
   </div>
 );
+
+const semesterTwoCourses: Course[] = [
+  { name: "Deep Learning: Theory and Practice", code: "222TCS005", credits: "3 credits", assessment: "40 CIA / 60 ESE" },
+  { name: "Optimization Techniques", code: "222TCS006", credits: "3 credits", assessment: "40 CIA / 60 ESE" },
+];
+const semesterTwoLabs: Course[] = [
+   { 
+    name: "Mini Project", 
+    code: "222PCS000", 
+    credits: "2 credits", 
+    assessment: "100 marks CIA",
+    details: {
+      totalMarks: "Total Marks: 100",
+      evaluations: [
+        { item: "Zeroth evaluation by the Evaluation Committee" },
+        { item: "Interim evaluation 1", marks: "20 marks", subItems: [
+          { item: "Topic Selection", marks: "4 marks" },
+          { item: "Knowledge about Existing Techniques", marks: "4 marks" },
+          { item: "Objectives & Methodology", marks: "4 marks" },
+          { item: "Quality of Presentation", marks: "4 marks" },
+          { item: "Viva", marks: "4 marks" },
+        ]},
+        { item: "Interim evaluation 2", marks: "20 marks", subItems: [
+          { item: "Methodology", marks: "4 marks" },
+          { item: "Knowledge about existing techniques", marks: "4 marks" },
+          { item: "Implementation", marks: "4 marks" },
+          { item: "Quality of Presentation & Clarity of future works", marks: "4 marks" },
+          { item: "Viva", marks: "4 marks" },
+        ]},
+        { item: "Final evaluation", marks: "35 marks" },
+        { item: "Report", marks: "15 marks" },
+        { item: "Supervisor", marks: "10 marks" },
+      ]
+    }
+  },
+  { name: "Deep Learning Lab", code: "222LCS001", credits: "1 credit", assessment: "100 marks CIA" },
+];
+const semesterThreeCommon: Course[] = [
+  { name: "MOOC", code: "223MCS000", credits: "2 credits", assessment: "-" },
+  { name: "Audit Course", code: "223AGEXXX", credits: "3 credits", assessment: "-" },
+  {
+    name: "Internship",
+    code: "223ICS000",
+    credits: "3 credits",
+    assessment: "-",
+    details: {
+      totalMarks: "Total Marks: 100",
+      evaluations: [
+        { item: "Presentation", marks: "25 marks" },
+        { item: "Report", marks: "25 marks" },
+      ]
+    }
+  },
+];
+const semesterThreeTracks: Course[] = [
+  {
+    name: "Track 1: Dissertation Phase 1",
+    code: "223PCS000",
+    credits: "11 credits",
+    assessment: "100 marks CIA",
+    details: {
+      totalMarks: "Continuous Internal Assessment (CIA): 100 Marks",
+      evaluations: [
+        { item: "Zeroth evaluation by the Evaluation Committee" },
+        { item: "Interim evaluation by the Evaluation Committee", marks: "20 marks", subItems: [
+          { item: "Literature Survey", marks: "5 marks" },
+          { item: "Comprehension and Problem Identification", marks: "5 marks" },
+          { item: "Objective Identification", marks: "5 marks" },
+          { item: "Document Preparation and Presentation", marks: "5 marks" },
+        ]},
+        { item: "Final evaluation by the Evaluation Committee", marks: "40 marks", subItems: [
+          { item: "Literature Survey", marks: "10 marks" },
+          { item: "Project Design", marks: "10 marks" },
+          { item: "Execution of tasks within timelines", marks: "10 marks" },
+          { item: "Presentation and document preparation", marks: "10 marks" },
+        ]},
+        { item: "Project Phase - I Report", marks: "20 marks" },
+        { item: "Project progress evaluation by supervisor", marks: "20 marks" },
+      ]
+    }
+  },
+  { name: "Track 2: Research Project Phase 1", code: "223PCS001", credits: "11 credits", assessment: "100 marks CIA" },
+];
+
+const semesterFourTracks: Course[] = [
+   {
+    name: "Track 1: Dissertation Phase II",
+    code: "224PCS000",
+    credits: "16 credits",
+    assessment: "100 CIA & ESE",
+    details: {
+      totalMarks: "Continuous Internal Assessment (CIA): 100 Marks",
+      evaluations: [
+        { item: "Zeroth evaluation by the Evaluation Committee" },
+        { item: "Interim evaluation by the Evaluation Committee", marks: "30 marks", subItems: [
+          { item: "Literature Survey", marks: "10 marks" },
+          { item: "Innovation & Originality", marks: "5 marks" },
+          { item: "Implementation & Execution", marks: "10 marks" },
+          { item: "Presentation and Defence", marks: "5 marks" },
+        ]},
+        { item: "Final evaluation by the Evaluation Committee", marks: "50 marks", subItems: [
+          { item: "Literature Survey", marks: "10 marks" },
+          { item: "Innovation & Originality", marks: "10 marks" },
+          { item: "Implementation & Execution", marks: "20 marks" },
+          { item: "Presentation and Defence", marks: "10 marks" },
+        ]},
+        { item: "Project progress evaluation by supervisor", marks: "20 marks" },
+        { item: "End Semester Evaluation (ESE)", marks: "100 Marks", subItems: [
+           { item: "Innovation and Originality", marks: "10 marks" },
+           { item: "Implementation and Execution", marks: "20 marks" },
+           { item: "Project Documentation", marks: "25 marks" },
+           { item: "Presentation and Defence", marks: "40 marks" },
+           { item: "Publication of work in conference/journal", marks: "5 marks" },
+        ]}
+      ]
+    }
+  },
+   { name: "Track 2: Research Project Phase II", code: "224PCS001", credits: "16 credits", assessment: "100 CIA & ESE" },
+]
+
 
 export function SyllabusSection() {
   return (
@@ -70,15 +246,13 @@ export function SyllabusSection() {
                 <div>
                   <h3 className="text-lg font-semibold mb-3">Core Courses</h3>
                   <ul className="space-y-3">
-                    <CourseListItem name="Deep Learning: Theory and Practice" code="222TCS005" credits="3 credits" assessment="40 CIA / 60 ESE" />
-                    <CourseListItem name="Optimization Techniques" code="222TCS006" credits="3 credits" assessment="40 CIA / 60 ESE" />
+                    {semesterTwoCourses.map(course => <CourseListItem key={course.code} {...course} />)}
                   </ul>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-3">Projects & Labs</h3>
                   <ul className="space-y-3">
-                    <CourseListItem name="Mini Project" code="222PCS000" credits="2 credits" assessment="100 marks CIA" />
-                    <CourseListItem name="Deep Learning Lab" code="222LCS001" credits="1 credit" assessment="100 marks CIA" />
+                     {semesterTwoLabs.map(course => <CourseListItem key={course.code} {...course} />)}
                   </ul>
                 </div>
                 <div>
@@ -102,17 +276,14 @@ export function SyllabusSection() {
                 <div>
                   <h3 className="text-lg font-semibold mb-3">Common Courses</h3>
                   <ul className="space-y-3">
-                    <CourseListItem name="MOOC" code="223MCS000" credits="2 credits" assessment="-" />
-                    <CourseListItem name="Audit Course" code="223AGEXXX" credits="3 credits" assessment="-" />
+                    {semesterThreeCommon.map(course => <CourseListItem key={course.code} {...course} />)}
                      <li className="pl-4 text-sm text-muted-foreground">e.g., Academic Writing, Advanced Engineering Materials, Forensic Engineering, Data Science for Engineers, Design Thinking, Functional Programming in Haskell, French, German, Japanese</li>
-                    <CourseListItem name="Internship" code="223ICS000" credits="3 credits" assessment="-" />
                   </ul>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-3">Tracks</h3>
                   <ul className="space-y-3">
-                    <CourseListItem name="Track 1: Dissertation Phase 1" code="223PCS000" credits="11 credits" assessment="100 marks CIA" />
-                    <CourseListItem name="Track 2: Research Project Phase 1" code="223PCS001" credits="11 credits" assessment="100 marks CIA" />
+                    {semesterThreeTracks.map(course => <CourseListItem key={course.code} {...course} />)}
                   </ul>
                 </div>
               </AccordionContent>
@@ -126,8 +297,7 @@ export function SyllabusSection() {
                  <div>
                   <h3 className="text-lg font-semibold mb-3">Tracks</h3>
                   <ul className="space-y-3">
-                    <CourseListItem name="Track 1: Dissertation Phase II" code="224PCS000" credits="16 credits" assessment="100 marks CIA & ESE" />
-                    <CourseListItem name="Track 2: Research Project Phase II" code="224PCS001" credits="16 credits" assessment="100 marks CIA & ESE" />
+                    {semesterFourTracks.map(course => <CourseListItem key={course.code} {...course} />)}
                   </ul>
                 </div>
               </AccordionContent>
