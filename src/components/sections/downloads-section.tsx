@@ -45,9 +45,60 @@ const downloadData: DownloadSection[] = [
     title: "Semester 3",
     items: [
       { title: "S3: Dissertation Guide Interaction Sheet", previewUrl: pdfPlaceholder, downloadUrl: pdfDownloadPlaceholder },
-      { title: "Dissertation outside the Institute", downloadUrl: '#', previewUrl: pdfPlaceholder, collapsibleContent: <p className="text-sm text-muted-foreground p-4">Guidelines for dissertations conducted outside the institute will be provided here. Please check back for updates.</p> },
-      { title: "Internship leading to Dissertation", downloadUrl: '#', previewUrl: pdfPlaceholder, collapsibleContent: <p className="text-sm text-muted-foreground p-4">Information on internships that can be extended into dissertation projects will be available here.</p> },
-      { title: "Dissertation as part of Employment", downloadUrl: '#', previewUrl: pdfPlaceholder, collapsibleContent: <p className="text-sm text-muted-foreground p-4">Details on how to structure a dissertation as part of ongoing employment will be outlined here.</p> },
+      { 
+        title: "Dissertation outside the Institute", 
+        downloadUrl: '#', 
+        previewUrl: pdfPlaceholder, 
+        collapsibleContent: (
+          <div className="prose prose-sm dark:prose-invert max-w-none p-4 text-muted-foreground space-y-3">
+            <p>They have completed successfully the course work prescribed in the approved curriculum up to the second semester.</p>
+            <p>The student has to get prior approval from the DLAC and CLAC.</p>
+            <p>Facilities required for doing the dissertation shall be available in the Organization/Industry (A certificate stating the facilities available in the proposed organization and the time period for which the facilities shall be made available to the student, issued by a competent authority from the Organization/Industry shall be submitted by the student along with the application).</p>
+            <p>They should have an external as well as an internal supervisor. The internal supervisor should belong to the parent institution and the external supervisor should be Scientists or Engineers from the Institution/Industry/ R&D organization with which the student is associated for doing the dissertation work. The external supervisor shall be with a minimum post graduate degree in the related area.</p>
+            <p>The student has to furnish his /her monthly progress as well as attendance report signed by the external supervisor and submit the same to the concerned Internal supervisor.</p>
+            <p>The external supervisor is to be preferably present during all the stages of evaluation of the dissertation.</p>
+            <p className="font-semibold text-foreground">Required Documents:</p>
+            <ul>
+              <li>Certificate stating the facilities available and time period</li>
+              <li>Attendance Sheet</li>
+              <li>Students Diary</li>
+              <li>Supervisor Evaluation Sheet</li>
+            </ul>
+          </div>
+        )
+      },
+      { 
+        title: "Internship leading to Dissertation", 
+        downloadUrl: '#', 
+        previewUrl: pdfPlaceholder, 
+        collapsibleContent: (
+          <div className="prose prose-sm dark:prose-invert max-w-none p-4 text-muted-foreground space-y-3">
+            <p>The M. Tech students who after completion of 6 to 8 weeks internship at some reputed organizations are allowed to continue their work as dissertation for the third and fourth semester after getting approval from the CLAC.</p>
+            <p>Such students shall make a brief presentation regarding the work they propose to carry out before the DLAC for a detailed scrutiny and to resolve its suitability for accepting it as an M.Tech dissertation.</p>
+            <p>These students will be continuing as regular students of the Institute in third semester for carrying out all academic requirements as per the curriculum/regulation.</p>
+            <p>However, they will be permitted to complete their dissertation in the Industry/Organization (where they have successfully completed their internship) during fourth semester.</p>
+            <p>They should have an external as well as an internal supervisor. The internal supervisor should belong to the parent institution and the external supervisor should be Scientists or Engineers from the external organization with which the student is associated for doing the dissertation work. The external supervisor shall be with a minimum post graduate degree in the related area.</p>
+            <p>The student has to furnish his /her monthly progress as well as attendance report signed by the external guide and submit the same to the concerned internal guide. The external guide is to be preferably present during all the stages of evaluation of the dissertation.</p>
+            <p className="font-semibold text-foreground">Required Documents:</p>
+            <ul>
+              <li>Certificate stating the facilities available and time period</li>
+              <li>Attendance Sheet</li>
+              <li>Students Diary</li>
+              <li>Supervisor Evaluation Sheet</li>
+            </ul>
+          </div>
+        ) 
+      },
+      { 
+        title: "Dissertation as part of Employment", 
+        downloadUrl: '#', 
+        previewUrl: pdfPlaceholder, 
+        collapsibleContent: (
+          <div className="prose prose-sm dark:prose-invert max-w-none p-4 text-muted-foreground">
+            <p>Check S3 Syllabus for Norms.</p>
+          </div>
+        )
+      },
       { title: "S3 Project Details Form", previewUrl: pdfPlaceholder, downloadUrl: pdfDownloadPlaceholder },
       { title: "Dissertation Phase 1 Report Template", previewUrl: pdfPlaceholder, downloadUrl: pdfDownloadPlaceholder },
     ],
@@ -72,10 +123,9 @@ const researchLinks = [
 ];
 
 const DownloadCard = ({ item }: { item: DownloadItem }) => (
-  <Card className="overflow-hidden transition-shadow hover:shadow-md">
-    <div className="grid grid-cols-1 md:grid-cols-3">
-      <div className="md:col-span-1 p-4 flex items-center justify-center bg-muted/30">
-        <div className="aspect-[3/4] w-full max-w-[200px] rounded border bg-white overflow-hidden shadow-sm">
+  <Card className="flex flex-col overflow-hidden transition-shadow hover:shadow-lg">
+    <div className="aspect-video w-full bg-muted/30 p-4 flex items-center justify-center">
+        <div className="aspect-[4/3] w-full max-w-[300px] rounded border bg-white overflow-hidden shadow-sm">
           {item.previewUrl ? (
             <iframe
               src={item.previewUrl}
@@ -91,15 +141,14 @@ const DownloadCard = ({ item }: { item: DownloadItem }) => (
           )}
         </div>
       </div>
-      <div className="md:col-span-2 p-6 flex flex-col justify-center">
-        <h3 className="font-headline text-lg font-semibold mb-2">{item.title}</h3>
-        {item.description && <p className="text-muted-foreground text-sm mb-4">{item.description}</p>}
-        <Button asChild className="mt-auto w-full sm:w-auto">
-          <a href={item.downloadUrl} target="_blank" rel="noopener noreferrer">
-            <ExternalLink className="mr-2 h-4 w-4" /> View (PDF)
-          </a>
-        </Button>
-      </div>
+    <div className="p-6 flex flex-col flex-grow">
+      <h3 className="font-headline text-lg font-semibold mb-2">{item.title}</h3>
+      {item.description && <p className="text-muted-foreground text-sm mb-4 flex-grow">{item.description}</p>}
+      <Button asChild className="mt-4 w-full sm:w-auto">
+        <a href={item.downloadUrl} target="_blank" rel="noopener noreferrer">
+          <ExternalLink className="mr-2 h-4 w-4" /> View (PDF)
+        </a>
+      </Button>
     </div>
     {item.collapsibleContent && (
        <Accordion type="single" collapsible className="w-full border-t">
@@ -131,7 +180,7 @@ export function DownloadsSection() {
           {downloadData.map((section) => (
             <div key={section.title}>
               <h3 className="text-2xl font-bold font-headline mb-6 border-l-4 border-primary pl-4">{section.title}</h3>
-              <div className="grid grid-cols-1 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {section.items.map((item) => (
                   <DownloadCard key={item.title} item={item} />
                 ))}
