@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -97,33 +98,59 @@ export function HpcSection() {
         <div>
             <h3 className="text-2xl font-bold font-headline mb-6 text-center">Remote Access Guide</h3>
             <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
-                <AccordionItem value="ssh">
-                    <AccordionTrigger>SSH Commands</AccordionTrigger>
+                <AccordionItem value="step1">
+                    <AccordionTrigger>1. Connect to the Remote Server</AccordionTrigger>
                     <AccordionContent className="space-y-4">
-                        <p>To access the server, use SSH from your terminal:</p>
-                        <CodeBlock>ssh username@server_ip_address</CodeBlock>
-                        <p>Example for Vega 1:</p>
-                        <CodeBlock>ssh student@192.168.1.101</CodeBlock>
+                        <p>Open Command Prompt (Windows) or Terminal (Ubuntu), then run:</p>
+                        <CodeBlock>ssh -L &lt;port_number&gt;:localhost:&lt;port_number&gt; user@172.20.33.92</CodeBlock>
+                        <p>Example:</p>
+                        <CodeBlock>ssh -L 8089:localhost:8089 user@172.20.33.92</CodeBlock>
                     </AccordionContent>
                 </AccordionItem>
-                <AccordionItem value="conda">
-                    <AccordionTrigger>Conda Environment Setup</AccordionTrigger>
+                <AccordionItem value="step2">
+                    <AccordionTrigger>2. If You Already Have a Conda Environment</AccordionTrigger>
                     <AccordionContent className="space-y-4">
-                        <p>Create a new conda environment:</p>
-                        <CodeBlock>conda create --name myenv python=3.8</CodeBlock>
-                        <p>Activate the environment:</p>
-                        <CodeBlock>conda activate myenv</CodeBlock>
+                        <p>Activate your environment:</p>
+                        <CodeBlock>conda activate &lt;your_name&gt;</CodeBlock>
+                        <p>Example:</p>
+                        <CodeBlock>conda activate sumod</CodeBlock>
+                        <p>Start Jupyter Notebook:</p>
+                        <CodeBlock>jupyter notebook --no-browser --port=&lt;same_port_number&gt;</CodeBlock>
+                        <p>Example:</p>
+                        <CodeBlock>jupyter notebook --no-browser --port=8089</CodeBlock>
+                        <p>Upload files and run your code.</p>
                     </AccordionContent>
                 </AccordionItem>
-                 <AccordionItem value="tensorflow">
-                    <AccordionTrigger>TensorFlow GPU Setup</AccordionTrigger>
+                 <AccordionItem value="step3">
+                    <AccordionTrigger>3. If You Need to Create a New Conda Environment</AccordionTrigger>
                     <AccordionContent className="space-y-4">
-                        <p>Install TensorFlow and necessary GPU libraries within your conda environment:</p>
-                        <CodeBlock>{`conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
-pip install "tensorflow<2.11"`}
-                        </CodeBlock>
-                        <p>Verify the installation:</p>
-                        <CodeBlock>python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"</CodeBlock>
+                        <p>Create environment:</p>
+                        <CodeBlock>conda create --name &lt;your_name&gt; python=3.9</CodeBlock>
+                        <p>Example:</p>
+                        <CodeBlock>conda create --name sumod python=3.9</CodeBlock>
+                        <p>Load Conda:</p>
+                        <CodeBlock>source ~/anaconda3/etc/profile.d/conda.sh</CodeBlock>
+                        <p>Activate environment:</p>
+                        <CodeBlock>conda activate &lt;your_name&gt;</CodeBlock>
+                         <p>Example:</p>
+                        <CodeBlock>conda activate sumod</CodeBlock>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="step4">
+                    <AccordionTrigger>4. Install Required Dependencies</AccordionTrigger>
+                    <AccordionContent className="space-y-4">
+                        <CodeBlock>conda install -c conda-forge cudatoolkit=11.8.0</CodeBlock>
+                        <CodeBlock>pip install nvidia-cudnn-cu11==8.6.0.163</CodeBlock>
+                        <CodeBlock>pip install --upgrade pip</CodeBlock>
+                        <CodeBlock>pip install tensorflow==2.13.*</CodeBlock>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="step5">
+                    <AccordionTrigger>5. Start Jupyter Notebook</AccordionTrigger>
+                    <AccordionContent className="space-y-4">
+                        <CodeBlock>jupyter notebook --no-browser --port=&lt;same_port_number&gt;</CodeBlock>
+                        <p>Example:</p>
+                        <CodeBlock>jupyter notebook --no-browser --port=8089</CodeBlock>
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
