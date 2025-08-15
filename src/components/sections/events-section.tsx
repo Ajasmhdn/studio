@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -148,45 +149,45 @@ const EventCard = ({ event }: { event: Event }) => (
                   />
               </div>
               <DialogTitle className="font-headline text-3xl">{event.title}</DialogTitle>
-              <DialogDescription className="space-y-3 pt-2">
-                 <div className="text-md text-muted-foreground space-y-2">
-                    <div className='flex items-center gap-2'>
-                      <CalendarIcon className="h-4 w-4 text-primary" />
-                      <span>
-                        {format(parseISO(event.startDate), 'MMMM d, yyyy')}
-                        {event.endDate && ` - ${format(parseISO(event.endDate), 'MMMM d, yyyy')}`}
-                      </span>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                      <User className="h-4 w-4 text-primary" />
-                      <span className='italic'>{event.speakers.join(', ')}</span>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                        <Tag className="h-4 w-4 text-primary" />
-                        <div className="flex flex-wrap gap-2">
-                            {event.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
-                        </div>
-                    </div>
-                  </div>
-              </DialogDescription>
             </DialogHeader>
-            <div className="py-6 text-foreground">
-              <p className="leading-relaxed">{event.longDescription}</p>
-            </div>
-            {event.materials && (
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Materials</h3>
-                <div className="flex flex-col gap-2">
-                  {event.materials.map(material => (
-                    <Button key={material.name} variant="outline" asChild className="justify-start">
-                      <a href={material.url} target="_blank" rel="noopener noreferrer">
-                        <Download className="mr-2 h-4 w-4" /> {material.name}
-                      </a>
-                    </Button>
-                  ))}
-                </div>
+            <div className="py-4 space-y-4">
+              <div className="text-md text-muted-foreground space-y-2">
+                  <div className='flex items-center gap-2'>
+                    <CalendarIcon className="h-4 w-4 text-primary" />
+                    <span>
+                      {format(parseISO(event.startDate), 'MMMM d, yyyy')}
+                      {event.endDate && ` - ${format(parseISO(event.endDate), 'MMMM d, yyyy')}`}
+                    </span>
+                  </div>
+                  <div className='flex items-center gap-2'>
+                    <User className="h-4 w-4 text-primary" />
+                    <span className='italic'>{event.speakers.join(', ')}</span>
+                  </div>
+                  <div className='flex items-center gap-2'>
+                      <Tag className="h-4 w-4 text-primary" />
+                      <div className="flex flex-wrap gap-2">
+                          {event.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                      </div>
+                  </div>
               </div>
-            )}
+              <div className="text-foreground">
+                <p className="leading-relaxed">{event.longDescription}</p>
+              </div>
+              {event.materials && (
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">Materials</h3>
+                  <div className="flex flex-col gap-2">
+                    {event.materials.map(material => (
+                      <Button key={material.name} variant="outline" asChild className="justify-start">
+                        <a href={material.url} target="_blank" rel="noopener noreferrer">
+                          <Download className="mr-2 h-4 w-4" /> {material.name}
+                        </a>
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           </ScrollArea>
         </DialogContent>
