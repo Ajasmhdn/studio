@@ -48,8 +48,8 @@ const navLinks = [
     href: '/curriculum',
     label: 'Curriculum',
     dropdown: [
-      { href: '/curriculum#materials', label: 'Materials', icon: BookOpen },
-      { href: '/curriculum#syllabus', label: 'Syllabus', icon: FileText },
+      { href: '/curriculum', label: 'Materials', icon: BookOpen },
+      { href: '/syllabus', label: 'Syllabus', icon: FileText },
     ],
   },
   { href: '/publications', label: 'Publications' },
