@@ -135,7 +135,7 @@ const DownloadCard = ({ item }: { item: DownloadItem }) => (
     </div>
     {item.collapsibleContent && (
        <Accordion type="single" collapsible className="w-full border-t">
-        <AccordionItem value="item-1" className="border-b-0">
+        <AccordionItem value={item.title} className="border-b-0">
           <AccordionTrigger className="px-6 py-3 text-sm font-medium hover:no-underline">
             Guidelines
           </AccordionTrigger>
