@@ -73,7 +73,7 @@ const navLinks = [
     dropdown: [
       { href: '/events', label: 'Events', icon: Calendar },
       { href: '/in-news', label: 'In News', icon: Newspaper },
-      { href: '/events#workshops', label: 'Workshops', icon: Presentation },
+      // { href: '/events#workshops', label: 'Workshops', icon: Presentation },
     ],
   },
   {
