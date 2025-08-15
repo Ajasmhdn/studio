@@ -4,15 +4,40 @@ import Image from "next/image";
 import { Card, CardContent } from '@/components/ui/card';
 
 const partners = [
-  { name: 'Nest Global', type: 'MoU', imageUrl: 'https://placehold.co/400x250.png', dataAiHint: 'corporate logo building' },
-  { name: 'Cyberdome – Kerala Police', type: 'MoU', imageUrl: 'https://placehold.co/400x250.png', dataAiHint: 'police department logo' },
-  { name: 'Acutro Technologies', type: 'MoU', imageUrl: 'https://placehold.co/400x250.png', dataAiHint: 'tech company logo' },
-  { name: 'Alshifa College of Arts & Science', type: 'MoU', imageUrl: 'https://placehold.co/400x250.png', dataAiHint: 'college campus building' },
-  { name: 'Sreenarayanaguru Open University', type: 'MoU', imageUrl: 'https://placehold.co/400x250.png', dataAiHint: 'university building logo' },
+  { 
+    name: 'Cyberdome – Kerala Police', 
+    type: 'MoU', 
+    imageUrl: 'https://i.ibb.co/6w43g87/mou-cyberdome.png', 
+    dataAiHint: 'official signing ceremony' 
+  },
+  { 
+    name: 'Nest Global', 
+    type: 'MoU', 
+    imageUrl: 'https://placehold.co/800x450.png', 
+    dataAiHint: 'corporate building office' 
+  },
+  { 
+    name: 'Acutro Technologies', 
+    type: 'MoU', 
+    imageUrl: 'https://placehold.co/800x450.png', 
+    dataAiHint: 'tech company logo' 
+  },
+  { 
+    name: 'Alshifa College of Arts & Science', 
+    type: 'MoU', 
+    imageUrl: 'https://placehold.co/800x450.png', 
+    dataAiHint: 'college campus building' 
+  },
+  { 
+    name: 'Sreenarayanaguru Open University', 
+    type: 'MoU', 
+    imageUrl: 'https://placehold.co/800x450.png', 
+    dataAiHint: 'university building logo' 
+  },
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 50 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -35,7 +60,7 @@ export function MouSection() {
             Our collaborations and consultancy agreements with industry and academic partners.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="space-y-16 max-w-4xl mx-auto">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.name}
@@ -43,23 +68,19 @@ export function MouSection() {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              className="w-full"
+              viewport={{ once: true, amount: 0.2 }}
             >
-              <Card className="overflow-hidden h-full text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <h3 className="text-2xl font-bold font-headline mb-4 text-center">{partner.name}</h3>
+              <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="relative aspect-video w-full">
                   <Image
                     src={partner.imageUrl}
-                    alt={`${partner.name} Logo`}
+                    alt={`${partner.name} collaboration`}
                     fill
                     className="object-cover"
                     data-ai-hint={partner.dataAiHint}
                   />
                 </div>
-                <CardContent className="p-4">
-                  <h3 className="font-semibold">{partner.name}</h3>
-                  <p className="text-sm text-muted-foreground">{partner.type}</p>
-                </CardContent>
               </Card>
             </motion.div>
           ))}
