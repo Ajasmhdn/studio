@@ -38,3 +38,16 @@ export interface Project {
   imageUrl: string;
   dataAiHint?: string;
 }
+
+export interface StudentAchievement {
+  name: string;
+  batch: string;
+  role: string;
+  company: string;
+  ctc: string;
+  email: string;
+  photoUrl: string;
+  dataAiHint?: string;
+  cgpa?: string;
+  achievements: string[];
+}
