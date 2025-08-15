@@ -50,6 +50,7 @@ const navLinks = [
     dropdown: [
       { href: '/curriculum', label: 'Syllabus & Downloads', icon: BookOpen },
       { href: '/syllabus', label: 'Curriculum Overview', icon: FileText },
+      { href: '/downloads', label: 'Downloads', icon: Download },
     ],
   },
   { href: '/publications', label: 'Publications' },
