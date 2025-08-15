@@ -114,8 +114,7 @@ export function GallerySection() {
                 Next <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
-          )}
-        </div>
+          </div>
       </section>
 
       <section id="gallery-videos" className="py-16 lg:py-24 bg-secondary">
