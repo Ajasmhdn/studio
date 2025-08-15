@@ -99,7 +99,7 @@ export function HpcSection() {
             <h3 className="text-2xl font-bold font-headline mb-6 text-center">Remote Access Guide</h3>
             <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
                 <AccordionItem value="step1">
-                    <AccordionTrigger>1. Connect to the Remote Server</AccordionTrigger>
+                    <AccordionTrigger>Connect to the Remote Server</AccordionTrigger>
                     <AccordionContent className="space-y-4">
                         <p>Open Command Prompt (Windows) or Terminal (Ubuntu), then run:</p>
                         <CodeBlock>ssh -L &lt;port_number&gt;:localhost:&lt;port_number&gt; user@172.20.33.92</CodeBlock>
@@ -108,7 +108,7 @@ export function HpcSection() {
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="step2">
-                    <AccordionTrigger>2. If You Already Have a Conda Environment</AccordionTrigger>
+                    <AccordionTrigger>If You Already Have a Conda Environment</AccordionTrigger>
                     <AccordionContent className="space-y-4">
                         <p>Activate your environment:</p>
                         <CodeBlock>conda activate &lt;your_name&gt;</CodeBlock>
@@ -122,7 +122,7 @@ export function HpcSection() {
                     </AccordionContent>
                 </AccordionItem>
                  <AccordionItem value="step3">
-                    <AccordionTrigger>3. If You Need to Create a New Conda Environment</AccordionTrigger>
+                    <AccordionTrigger>If You Need to Create a New Conda Environment</AccordionTrigger>
                     <AccordionContent className="space-y-4">
                         <p>Create environment:</p>
                         <CodeBlock>conda create --name &lt;your_name&gt; python=3.9</CodeBlock>
@@ -137,7 +137,7 @@ export function HpcSection() {
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="step4">
-                    <AccordionTrigger>4. Install Required Dependencies</AccordionTrigger>
+                    <AccordionTrigger>Install Required Dependencies</AccordionTrigger>
                     <AccordionContent className="space-y-4">
                         <CodeBlock>conda install -c conda-forge cudatoolkit=11.8.0</CodeBlock>
                         <CodeBlock>pip install nvidia-cudnn-cu11==8.6.0.163</CodeBlock>
@@ -146,7 +146,7 @@ export function HpcSection() {
                     </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="step5">
-                    <AccordionTrigger>5. Start Jupyter Notebook</AccordionTrigger>
+                    <AccordionTrigger>Start Jupyter Notebook</AccordionTrigger>
                     <AccordionContent className="space-y-4">
                         <CodeBlock>jupyter notebook --no-browser --port=&lt;same_port_number&gt;</CodeBlock>
                         <p>Example:</p>
