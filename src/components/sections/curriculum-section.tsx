@@ -5,23 +5,28 @@ import { Download } from "lucide-react";
 const syllabusData = [
   {
     title: "Semester 1 Syllabus",
-    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    previewUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j",
   },
   {
     title: "Semester 2 Syllabus",
-    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    previewUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j",
   },
   {
     title: "Semester 3 Syllabus",
-    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    previewUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j",
   },
   {
     title: "Semester 4 Syllabus",
-    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    previewUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j",
   },
   {
     title: "Semester 3 Audit Course Syllabus",
-    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    previewUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
+    downloadUrl: "https://drive.google.com/uc?export=download&id=1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j",
   },
 ];
 
@@ -41,7 +46,7 @@ export function CurriculumSection() {
               <CardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
                 <CardTitle className="font-headline text-2xl mb-4 sm:mb-0">{item.title}</CardTitle>
                 <Button asChild>
-                  <a href={item.pdfUrl} target="_blank" rel="noopener noreferrer">
+                  <a href={item.downloadUrl} target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-4 w-4" /> Download PDF
                   </a>
                 </Button>
@@ -49,7 +54,7 @@ export function CurriculumSection() {
               <CardContent>
                 <div className="aspect-[4/3] w-full rounded-md border overflow-hidden">
                   <iframe
-                    src={item.pdfUrl}
+                    src={item.previewUrl}
                     width="100%"
                     height="100%"
                     title={item.title}
