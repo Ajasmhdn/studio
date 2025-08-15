@@ -108,23 +108,21 @@ const researchLinks = [
 
 const DownloadCard = ({ item }: { item: DownloadItem }) => (
   <Card className="flex flex-col overflow-hidden transition-shadow hover:shadow-lg h-full">
-    <div className="aspect-video w-full bg-muted/30 p-4 flex items-center justify-center">
-        <div className="aspect-[4/3] w-full max-w-[300px] rounded border bg-white overflow-hidden shadow-sm">
-          {item.previewUrl ? (
-            <iframe
-              src={item.previewUrl}
-              title={`${item.title} Preview`}
-              className="w-full h-full border-0"
-              loading="lazy"
-            />
-          ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground p-4">
-               <FileText className="w-12 h-12 mb-2" />
-               <p className="text-xs text-center">No Preview Available</p>
-            </div>
-          )}
+    <div className="aspect-video w-full border-b">
+      {item.previewUrl ? (
+        <iframe
+          src={item.previewUrl}
+          title={`${item.title} Preview`}
+          className="w-full h-full border-0"
+          loading="lazy"
+        />
+      ) : (
+        <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground p-4 bg-muted/30">
+           <FileText className="w-12 h-12 mb-2" />
+           <p className="text-xs text-center">No Preview Available</p>
         </div>
-      </div>
+      )}
+    </div>
     <div className="p-6 flex flex-col flex-grow">
       <h3 className="font-headline text-lg font-semibold mb-4 flex-grow">{item.title}</h3>
       <Button asChild className="mt-auto w-full sm:w-auto self-start">
