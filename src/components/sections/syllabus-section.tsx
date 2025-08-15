@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check } from "lucide-react";
 
 interface EvaluationDetail {
   item: string;
@@ -23,13 +24,19 @@ const EvaluationDetails = ({ details }: { details: Course['details'] }) => {
   if (!details) return null;
 
   const renderDetails = (evalDetails: EvaluationDetail[], level = 0) => (
-    <ul className={level > 0 ? 'pl-6' : ''}>
+    <ul className={level > 0 ? 'space-y-2' : 'space-y-3'}>
       {evalDetails.map((detail, index) => (
-        <li key={index} className="flex justify-between items-start mt-1">
-          <span>{detail.item}</span>
-          {detail.marks && <span className="font-semibold whitespace-nowrap">{detail.marks}</span>}
+        <li key={index} className="flex flex-col">
+          <div className="flex items-start gap-3">
+            {level === 0 && <Check className="h-5 w-5 text-green-500 mt-1 shrink-0" />}
+            {level > 0 && <span className="w-5 shrink-0 text-center">-</span>}
+            <div className={`flex-1 grid grid-cols-3 gap-2 ${level > 0 ? 'ml-5' : ''}`}>
+              <span className="col-span-2">{detail.item}</span>
+              {detail.marks && <span className="font-semibold text-right">{detail.marks}</span>}
+            </div>
+          </div>
           {detail.subItems && (
-            <div className="w-full pl-4">
+            <div className="mt-2 pl-8">
               {renderDetails(detail.subItems, level + 1)}
             </div>
           )}
@@ -39,14 +46,17 @@ const EvaluationDetails = ({ details }: { details: Course['details'] }) => {
   );
 
   return (
-    <Card className="mt-3 bg-card/30">
-      <CardHeader className="p-4">
-        <CardTitle className="text-base font-semibold">Evaluation Breakdown</CardTitle>
+    <Card className="mt-4 bg-card/30">
+      <CardHeader className="p-4 pb-2">
+        <CardTitle className="text-base font-semibold flex items-start gap-3">
+          <Check className="h-5 w-5 text-green-500 mt-1 shrink-0" />
+           <div className="flex-1 grid grid-cols-3 gap-2">
+              <span className="col-span-2">Total Marks</span>
+              <span className="font-semibold text-right">{details.totalMarks}</span>
+            </div>
+        </CardTitle>
       </CardHeader>
-      <CardContent className="p-4 pt-0 text-sm text-muted-foreground">
-        <div className="flex justify-between items-center font-bold text-foreground mb-2">
-          <span>{details.totalMarks}</span>
-        </div>
+      <CardContent className="p-4 pt-2 text-sm text-muted-foreground">
         {renderDetails(details.evaluations)}
       </CardContent>
     </Card>
@@ -82,13 +92,13 @@ const semesterTwoCourses: Course[] = [
   { name: "Optimization Techniques", code: "222TCS006", credits: "3 credits", assessment: "40 CIA / 60 ESE" },
 ];
 const semesterTwoLabs: Course[] = [
-   { 
-    name: "Mini Project", 
-    code: "222PCS000", 
-    credits: "2 credits", 
+   {
+    name: "Mini Project",
+    code: "222PCS000",
+    credits: "2 credits",
     assessment: "100 marks CIA",
     details: {
-      totalMarks: "Total Marks: 100",
+      totalMarks: "100 Marks",
       evaluations: [
         { item: "Zeroth evaluation by the Evaluation Committee" },
         { item: "Interim evaluation 1", marks: "20 marks", subItems: [
@@ -122,7 +132,7 @@ const semesterThreeCommon: Course[] = [
     credits: "3 credits",
     assessment: "-",
     details: {
-      totalMarks: "Total Marks: 100",
+      totalMarks: "100 Marks",
       evaluations: [
         { item: "Presentation", marks: "25 marks" },
         { item: "Report", marks: "25 marks" },
@@ -137,7 +147,7 @@ const semesterThreeTracks: Course[] = [
     credits: "11 credits",
     assessment: "100 marks CIA",
     details: {
-      totalMarks: "Continuous Internal Assessment (CIA): 100 Marks",
+      totalMarks: "100 Marks",
       evaluations: [
         { item: "Zeroth evaluation by the Evaluation Committee" },
         { item: "Interim evaluation by the Evaluation Committee", marks: "20 marks", subItems: [
@@ -167,20 +177,20 @@ const semesterFourTracks: Course[] = [
     credits: "16 credits",
     assessment: "100 CIA & ESE",
     details: {
-      totalMarks: "Continuous Internal Assessment (CIA): 100 Marks",
+      totalMarks: "100 Marks",
       evaluations: [
         { item: "Zeroth evaluation by the Evaluation Committee" },
         { item: "Interim evaluation by the Evaluation Committee", marks: "30 marks", subItems: [
-          { item: "Literature Survey", marks: "10 marks" },
-          { item: "Innovation & Originality", marks: "5 marks" },
-          { item: "Implementation & Execution", marks: "10 marks" },
-          { item: "Presentation and Defence", marks: "5 marks" },
+           { item: "Literature Survey", marks: "10 marks" },
+           { item: "Innovation & Originality", marks: "5 marks" },
+           { item: "Implementation & Execution", marks: "10 marks" },
+           { item: "Presentation and Defence", marks: "5 marks" },
         ]},
         { item: "Final evaluation by the Evaluation Committee", marks: "50 marks", subItems: [
-          { item: "Literature Survey", marks: "10 marks" },
-          { item: "Innovation & Originality", marks: "10 marks" },
-          { item: "Implementation & Execution", marks: "20 marks" },
-          { item: "Presentation and Defence", marks: "10 marks" },
+           { item: "Literature Survey", marks: "10 marks" },
+           { item: "Innovation & Originality", marks: "10 marks" },
+           { item: "Implementation & Execution", marks: "20 marks" },
+           { item: "Presentation and Defence", marks: "10 marks" },
         ]},
         { item: "Project progress evaluation by supervisor", marks: "20 marks" },
         { item: "End Semester Evaluation (ESE)", marks: "100 Marks", subItems: [
