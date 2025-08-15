@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -9,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Maximize, PlayCircle } from 'lucide-react';
 
 const galleryImages = Array.from({ length: 15 }, (_, i) => ({
-  src: `https://placehold.co/600x400.png`,
+  src: `https://placehold.co/721x463.png`,
   alt: `Gallery image ${i + 1}`,
   dataAiHint: 'university event students',
 }));
@@ -17,7 +18,6 @@ const galleryImages = Array.from({ length: 15 }, (_, i) => ({
 const videoData = [
   { id: 'dQw4w9WgXcQ', title: 'Campus Tour', dataAiHint: 'university campus drone' },
   { id: '3JZ_D3ELwOQ', title: 'Annual Tech Fest Highlights', dataAiHint: 'tech conference event' },
-  { id: 'LXb3EKWsInQ', title: 'A Day in the AI Lab', dataAiHint: 'students coding computer' },
 ];
 
 const IMAGES_PER_PAGE = 9;
@@ -75,7 +75,7 @@ export function GallerySection() {
                      viewport={{ once: true }}
                   >
                     <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                      <div className="aspect-video relative">
+                      <div className="aspect-[721/463] relative">
                         <Image
                           src={image.src}
                           alt={image.alt}
