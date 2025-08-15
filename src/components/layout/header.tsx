@@ -56,21 +56,12 @@ const navLinks = [
     ],
   },
   { href: '/publications', label: 'Publications' },
-  // {
-  //   href: '/projects',
-  //   label: 'Projects',
-  //   dropdown: [
-  //     { href: '/projects#2023-25', label: 'Batch 2023–25', icon: Lightbulb },
-  //     { href: '/projects#2022-24', label: 'Batch 2022–24', icon: Lightbulb },
-  //     { href: '/projects#2021-23', label: 'Batch 2021–23', icon: Lightbulb },
-  //     { href: '/projects#2020-22', label: 'Batch 2020–22', icon: Lightbulb },
-  //   ],
-  // },
+  { href: '/projects', label: 'Projects' },
   {
     href: '/achievements',
     label: 'MoU & Achievements',
     dropdown: [
-      { href: '/achievements#mou', label: 'MoU', icon: Handshake },
+      { href: '/mou', label: 'MoU', icon: Handshake },
       { href: '/achievements#placements', label: 'Placements', icon: Trophy },
       { href: '/achievements#students', label: 'Students', icon: Users },
     ],
