@@ -67,3 +67,13 @@ export interface Event {
   materials?: { name: string; url: string }[];
   featured?: boolean;
 }
+
+export interface InNews {
+  id: number;
+  title: string;
+  date: string;
+  imageUrl: string;
+  dataAiHint: string;
+  shortDescription: string;
+  fullDescription: string;
+}
