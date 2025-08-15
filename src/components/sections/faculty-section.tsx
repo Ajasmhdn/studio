@@ -1,5 +1,6 @@
 import type { FacultyMember } from "@/lib/types";
-import { FacultyCard } from "@/components/faculty-card";
+import { FacultyMemberCard } from "@/components/faculty-member-card";
+import { Separator } from "@/components/ui/separator";
 
 const regularFaculty: FacultyMember[] = [
   {
@@ -87,9 +88,12 @@ export function FacultySection() {
               Regular Department Faculty
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {regularFaculty.map((member) => (
-              <FacultyCard key={member.email} member={member} />
+          <div className="space-y-12 max-w-5xl mx-auto">
+            {regularFaculty.map((member, index) => (
+              <React.Fragment key={member.email}>
+                <FacultyMemberCard member={member} />
+                {index < regularFaculty.length - 1 && <Separator />}
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -99,9 +103,9 @@ export function FacultySection() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl text-secondary-foreground">Honorary Professor</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
              {honoraryFaculty.map((member) => (
-                <FacultyCard key={member.email} member={member} />
+                <FacultyMemberCard key={member.email} member={member} />
             ))}
           </div>
         </div>
