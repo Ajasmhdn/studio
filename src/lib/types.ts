@@ -51,3 +51,19 @@ export interface StudentAchievement {
   cgpa?: string;
   achievements: string[];
 }
+
+export interface Event {
+  id: number;
+  title: string;
+  startDate: string;
+  endDate?: string;
+  speakers: string[];
+  organization: string;
+  shortDescription: string;
+  longDescription: string;
+  tags: ('Talk' | 'Workshop' | 'Certificate Course' | 'Technical Session' | 'Training')[];
+  imageUrl: string;
+  dataAiHint?: string;
+  materials?: { name: string; url: string }[];
+  featured?: boolean;
+}
