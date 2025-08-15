@@ -1,3 +1,4 @@
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,7 +45,28 @@ const downloadData: DownloadSection[] = [
   {
     title: "Semester 3",
     items: [
-      { title: "S3: Dissertation Guide Interaction Sheet", previewUrl: pdfPlaceholder, downloadUrl: pdfDownloadPlaceholder },
+      { 
+        title: "S3: Dissertation Guide Interaction Sheet", 
+        previewUrl: pdfPlaceholder, 
+        downloadUrl: pdfDownloadPlaceholder,
+        collapsibleContent: (
+          <div className="prose prose-sm dark:prose-invert max-w-none p-4 text-muted-foreground space-y-3">
+            <p>The M. Tech students who after completion of 6 to 8 weeks internship at some reputed organizations are allowed to continue their work as dissertation for the third and fourth semester after getting approval from the CLAC.</p>
+            <p>Such students shall make a brief presentation regarding the work they propose to carry out before the DLAC for a detailed scrutiny and to resolve its suitability for accepting it as an M.Tech dissertation.</p>
+            <p>These students will be continuing as regular students of the Institute in third semester for carrying out all academic requirements as per the curriculum/regulation.</p>
+            <p>However, they will be permitted to complete their dissertation in the Industry/Organization (where they have successfully completed their internship) during fourth semester.</p>
+            <p>They should have an external as well as an internal supervisor. The internal supervisor should belong to the parent institution and the external supervisor should be Scientists or Engineers from the external organization with which the student is associated for doing the dissertation work. The external supervisor shall be with a minimum post graduate degree in the related area.</p>
+            <p>The student has to furnish his /her monthly progress as well as attendance report signed by the external guide and submit the same to the concerned internal guide. The external guide is to be preferably present during all the stages of evaluation of the dissertation.</p>
+            <p className="font-semibold text-foreground">Required Documents:</p>
+            <ul>
+              <li>Certificate stating the facilities available and time period</li>
+              <li>Attendance Sheet</li>
+              <li>Students Diary</li>
+              <li>Supervisor Evaluation Sheet</li>
+            </ul>
+          </div>
+        )
+      },
       { 
         title: "Dissertation outside the Institute", 
         downloadUrl: '#', 
@@ -211,3 +233,5 @@ export function DownloadsSection() {
     </section>
   );
 }
+
+    
