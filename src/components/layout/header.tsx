@@ -17,6 +17,7 @@ import {
   GalleryHorizontal,
   Download,
   Building2,
+  Cpu,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -51,6 +52,7 @@ const navLinks = [
       { href: '/curriculum', label: 'Syllabus & Downloads', icon: BookOpen },
       { href: '/syllabus', label: 'Curriculum Overview', icon: FileText },
       { href: '/downloads', label: 'Downloads', icon: Download },
+      { href: '/hpc', label: 'HPC Facility', icon: Cpu },
     ],
   },
   { href: '/publications', label: 'Publications' },
