@@ -57,14 +57,14 @@ const navLinks = [
       { href: '/hpc', label: 'HPC Facility', icon: Cpu },
     ],
   },
-  { href: '/publications', label: 'Publications' },
-  { href: '/projects', label: 'Projects' },
   {
     href: '#',
     label: 'Accomplishments',
     dropdown: [
       { href: '/mou', label: 'MoU & Consultancy', icon: Handshake },
       { href: '/achievements', label: 'Placements', icon: GraduationCap },
+      { href: '/publications', label: 'Publications', icon: BookOpen },
+      { href: '/projects', label: 'Projects', icon: Lightbulb },
       { href: '/student-achievements', label: 'Student Achievements', icon: Award },
     ],
   },
