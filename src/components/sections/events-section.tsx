@@ -33,6 +33,8 @@ import {
 import { Search, Download, Calendar as CalendarIcon, User, Tag } from 'lucide-react';
 import type { Event } from '@/lib/types';
 import { ScrollArea } from '../ui/scroll-area';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
 
 const eventsData: Event[] = [
   {
@@ -87,7 +89,225 @@ const eventsData: Event[] = [
     imageUrl: 'https://placehold.co/800x1200.png',
     dataAiHint: 'coding workshop poster',
   },
+  {
+    id: 5,
+    title: 'Workshop on Python Programming for Beginners',
+    startDate: '2024-07-17',
+    endDate: '2024-07-18',
+    speakers: ['Dr. Imthias Ahamed', 'Dr. Sumod Sundar', 'Prof. Chinnu Jacob'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Workshop'],
+    imageUrl: '',
+  },
+  {
+    id: 6,
+    title: 'Workshop on Machine Learning',
+    startDate: '2024-08-12',
+    endDate: '2024-08-16',
+    speakers: ['Dr. Sumod Sundar'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Workshop'],
+    imageUrl: '',
+  },
+  {
+    id: 7,
+    title: 'Technical Interaction on Utilizing Docker for Server Management',
+    startDate: '2024-04-20',
+    speakers: ['Mr. Sarath S Kumar, Devops Engineer, eClear Berlin, Germany'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Talk', 'Technical Session'],
+    imageUrl: '',
+  },
+  {
+    id: 8,
+    title: 'Handson Workshop on Python Programming for NISH students',
+    startDate: '2024-04-08',
+    speakers: ['Prof. Sumod Sundar', 'Prof. Chinnu Jacob'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Workshop'],
+    imageUrl: '',
+  },
+  {
+    id: 9,
+    title: 'Handson Workshop on Machine Learning for Beginners',
+    startDate: '2024-04-06',
+    endDate: '2024-04-07',
+    speakers: ['Prof. Sumod Sundar'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Workshop'],
+    imageUrl: '',
+  },
+  {
+    id: 10,
+    title: "30 hour certificate course on Python Programming",
+    startDate: '2023-08-05',
+    endDate: '2023-08-27',
+    speakers: ['Prof. Christy D Ponnan', 'Prof. Sumod Sundar'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Certificate Course'],
+    imageUrl: '',
+  },
+  {
+    id: 11,
+    title: 'Technical Talk on Sculpting Light Lase Holography Applications',
+    startDate: '2023-04-12',
+    speakers: ['Dr. P. T Ajith Kumar, President & Lead Scientist, Light logistics Holgraphy & Optics Pvt Ltd'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Talk'],
+    imageUrl: '',
+  },
+  {
+    id: 12,
+    title: "Workshop on How to use ChatGPT effectively for generating questions based on Bloom's taxonomy",
+    startDate: '2023-08-02',
+    speakers: ['Dr. Imthias Ahamed'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Workshop'],
+    imageUrl: '',
+  },
+  {
+    id: 13,
+    title: '30 hour certificate course on Python Programming',
+    startDate: '2022-12-19',
+    endDate: '2023-01-13',
+    speakers: ['Prof. Sumod Sundar', 'Prof. Chinnu Jacob', 'Prof. Christy D Ponnan'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Certificate Course'],
+    imageUrl: '',
+  },
+  {
+    id: 14,
+    title: 'Expert Talk & Interaction on Role of oppurtunities of AI in crime monitoring',
+    startDate: '2022-10-26',
+    speakers: ['Mr. Anand V. S, Police officer Kerala Police Cyberdome ECH,ECSA,ISMS Lead Auditor,MCTS & C-DAC Cyber Forensic Science'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Talk'],
+    imageUrl: '',
+  },
+  {
+    id: 15,
+    title: 'Technical Session on Introduction to AI workflows and Applications using Matlab',
+    startDate: '2022-09-02',
+    speakers: ['Corell Technologies'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Technical Session'],
+    imageUrl: '',
+  },
+  {
+    id: 16,
+    title: 'Online handson Workshop on Deep Learning for Beginners',
+    startDate: '2022-08-26',
+    endDate: '2022-08-31',
+    speakers: ['Prof. Sumod Sundar'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Workshop'],
+    imageUrl: '',
+  },
+  {
+    id: 17,
+    title: 'Training Program on AI & Robotics for SAMETI officers',
+    startDate: '2022-08-03',
+    speakers: ['Dr. Imthias Ahamed', 'Prof. Chinnu Jacob'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Training'],
+    imageUrl: '',
+  },
+  {
+    id: 18,
+    title: 'Online handson Workshop on ABC of Machine Learning',
+    startDate: '2022-04-27',
+    endDate: '2022-05-01',
+    speakers: ['Prof. Sumod Sundar'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Workshop'],
+    imageUrl: '',
+  },
+  {
+    id: 19,
+    title: 'Talk on NBA process',
+    startDate: '2023-01-18',
+    speakers: ['Dr. Santhi Natarajan, Honorary Professor, Centre for AI, Assoc Professor Shiv Nadar University Chennai'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Talk'],
+    imageUrl: '',
+  },
+  {
+    id: 20,
+    title: 'Technical Talk on Cyber Security - the big picture',
+    startDate: '2021-12-01',
+    speakers: ['Prof. Shamin. S, Information Security Management Consultant'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Talk'],
+    imageUrl: '',
+  },
+  {
+    id: 21,
+    title: 'Technical Session on Introduction to AI workflows and Applications using Matlab',
+    startDate: '2021-09-29',
+    endDate: '2021-09-30',
+    speakers: ['Corell Technologies'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Technical Session'],
+    imageUrl: '',
+  },
+  {
+    id: 22,
+    title: 'Talk on AI in Medical Robotics',
+    startDate: '2021-05-02',
+    speakers: ['Dr. Branesh M Pillai, Faculty Member (Foreign Expert), Centre for Biomedical & Robotics Technology, Mahidol University, Thailand'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Talk'],
+    imageUrl: '',
+  },
+  {
+    id: 23,
+    title: 'Talk on High Performance Computing',
+    startDate: '2021-04-08',
+    speakers: ['Dr. Santhi Natarajan, Honorary Professor, Centre for AI, Assoc Professor Shiv Nadar University Chennai'],
+    organization: 'Centre for AI, TKMCE',
+    shortDescription: '',
+    longDescription: '',
+    tags: ['Talk'],
+    imageUrl: '',
+  },
 ];
+
 
 const EventCard = ({ event }: { event: Event }) => (
   <motion.div
@@ -151,7 +371,7 @@ const EventCard = ({ event }: { event: Event }) => (
               <DialogTitle className="font-headline text-3xl">{event.title}</DialogTitle>
             </DialogHeader>
             <div className="py-4 space-y-4">
-              <div className="text-md text-muted-foreground space-y-2">
+              <div className="text-md text-muted-foreground space-y-3 pt-2">
                   <div className='flex items-center gap-2'>
                     <CalendarIcon className="h-4 w-4 text-primary" />
                     <span>
@@ -159,8 +379,8 @@ const EventCard = ({ event }: { event: Event }) => (
                       {event.endDate && ` - ${format(parseISO(event.endDate), 'MMMM d, yyyy')}`}
                     </span>
                   </div>
-                  <div className='flex items-center gap-2'>
-                    <User className="h-4 w-4 text-primary" />
+                  <div className='flex items-start gap-2'>
+                    <User className="h-4 w-4 text-primary mt-1" />
                     <span className='italic'>{event.speakers.join(', ')}</span>
                   </div>
                   <div className='flex items-center gap-2'>
@@ -197,11 +417,47 @@ const EventCard = ({ event }: { event: Event }) => (
   </motion.div>
 );
 
+const PastEventsTable = ({ events }: { events: Event[] }) => {
+  const formatDateRange = (start: string, end?: string) => {
+    if (end) {
+      const startDate = parseISO(start);
+      const endDate = parseISO(end);
+      if (startDate.getMonth() === endDate.getMonth() && startDate.getFullYear() === endDate.getFullYear()) {
+        return `${format(startDate, 'dd')} - ${format(endDate, 'dd/MM/yyyy')}`;
+      }
+      return `${format(startDate, 'dd/MM/yyyy')} - ${format(endDate, 'dd/MM/yyyy')}`;
+    }
+    return format(parseISO(start), 'dd/MM/yyyy');
+  };
+  
+  return (
+    <Card>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[150px]">Date</TableHead>
+            <TableHead>Program</TableHead>
+            <TableHead>Resource Person(s)</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {events.map(event => (
+            <TableRow key={event.id}>
+              <TableCell className="font-medium">{formatDateRange(event.startDate, event.endDate)}</TableCell>
+              <TableCell>{event.title}</TableCell>
+              <TableCell>{event.speakers.join(', ')}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Card>
+  );
+};
+
 export function EventsSection() {
   const [searchTerm, setSearchTerm] = useState('');
   const [yearFilter, setYearFilter] = useState('all');
   const [tagFilter, setTagFilter] = useState('all');
-  const [visibleCount, setVisibleCount] = useState(6);
 
   const filteredEvents = useMemo(() => {
     return eventsData
@@ -220,8 +476,8 @@ export function EventsSection() {
       })
       .sort((a, b) => parseISO(b.startDate).getTime() - parseISO(a.startDate).getTime());
   }, [searchTerm, yearFilter, tagFilter]);
-
-  const recentAndFeatured = filteredEvents.filter(e => e.featured || parseISO(e.startDate) > new Date(new Date().setMonth(new Date().getMonth() - 6)));
+  
+  const recentAndFeatured = filteredEvents.filter(e => (e.featured || parseISO(e.startDate) > new Date(new Date().setMonth(new Date().getMonth() - 6))) && e.imageUrl);
   const pastEvents = filteredEvents.filter(e => !recentAndFeatured.includes(e));
 
   const years = ['all', ...Array.from(new Set(eventsData.map(e => format(parseISO(e.startDate), 'yyyy')))).sort((a, b) => b.localeCompare(a))];
@@ -280,15 +536,8 @@ export function EventsSection() {
             )}
             {pastEvents.length > 0 && (
               <div>
-                <h3 className="text-2xl font-bold font-headline mb-6 border-l-4 border-primary pl-4">Past Events</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {pastEvents.slice(0, visibleCount).map(event => <EventCard key={event.id} event={event} />)}
-                </div>
-                {visibleCount < pastEvents.length && (
-                  <div className="text-center mt-12">
-                    <Button onClick={() => setVisibleCount(prev => prev + 6)}>Load More</Button>
-                  </div>
-                )}
+                <h3 className="text-2xl font-bold font-headline mb-6 border-l-4 border-primary pl-4">Programs Conducted</h3>
+                <PastEventsTable events={pastEvents} />
               </div>
             )}
           </div>
