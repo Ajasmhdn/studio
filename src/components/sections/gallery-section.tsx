@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Maximize, PlayCircle } from 'lucide-react';
 
@@ -93,8 +93,9 @@ export function GallerySection() {
               ))}
             </div>
              <DialogContent className="max-w-4xl p-2 bg-transparent border-0">
+               <DialogTitle className="sr-only">Expanded Image View</DialogTitle>
               {selectedImage && (
-                <div className="relative aspect-video">
+                <div className="relative aspect-[721/463]">
                     <Image src={selectedImage} alt="Selected gallery image" fill className="object-contain" />
                 </div>
               )}
@@ -160,6 +161,7 @@ export function GallerySection() {
               ))}
             </div>
             <DialogContent className="max-w-4xl p-0 bg-transparent border-0">
+              <DialogTitle className="sr-only">Video Player</DialogTitle>
                {selectedVideo && (
                 <div className="aspect-video">
                   <iframe
