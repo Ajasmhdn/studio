@@ -92,8 +92,8 @@ export function GallerySection() {
                 </DialogTrigger>
               ))}
             </div>
-             <DialogContent className="max-w-4xl p-2 bg-transparent border-0">
-               <DialogTitle className="sr-only">Expanded Image View</DialogTitle>
+            <DialogContent className="max-w-4xl p-2 bg-transparent border-0">
+              <DialogTitle className="sr-only">Expanded Image View</DialogTitle>
               {selectedImage && (
                 <div className="relative aspect-[721/463]">
                     <Image src={selectedImage} alt="Selected gallery image" fill className="object-contain" />
@@ -114,7 +114,8 @@ export function GallerySection() {
                 Next <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
-          </div>
+          )}
+        </div>
       </section>
 
       <section id="gallery-videos" className="py-16 lg:py-24 bg-secondary">
