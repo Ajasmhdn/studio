@@ -52,7 +52,6 @@ const navLinks = [
     dropdown: [
       { href: '/curriculum', label: 'Syllabus & Downloads', icon: BookOpen },
       { href: '/syllabus', label: 'Curriculum Overview', icon: FileText },
-      { href: '/downloads', label: 'Downloads', icon: Download },
       { href: '/hpc', label: 'HPC Facility', icon: Cpu },
     ],
   },
@@ -80,8 +79,8 @@ const navLinks = [
     href: '/gallery',
     label: 'Gallery & Downloads',
     dropdown: [
-      { href: '/gallery#gallery', label: 'Gallery', icon: GalleryHorizontal },
-      { href: '/gallery#downloads', label: 'Downloads', icon: Download },
+      { href: '/gallery', label: 'Gallery', icon: GalleryHorizontal },
+      { href: '/downloads', label: 'Downloads', icon: Download },
     ],
   },
   { href: '/contact', label: 'Contact' },
