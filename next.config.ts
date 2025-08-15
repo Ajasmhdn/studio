@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // Add the srcDir option to specify that the app is in the src directory
+  srcDir: 'src',
   // Ignore TypeScript build errors (optional)
   typescript: {
     ignoreBuildErrors: true,
@@ -8,7 +10,7 @@ const nextConfig: NextConfig = {
   // Ignore ESLint errors during builds (optional)
   eslint: {
     ignoreDuringBuilds: true,
-  },
+f  },
   // Remote image configuration for Next.js Image component
   images: {
     remotePatterns: [
