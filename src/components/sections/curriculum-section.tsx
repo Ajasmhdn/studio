@@ -5,23 +5,23 @@ import { Download } from "lucide-react";
 const syllabusData = [
   {
     title: "Semester 1 Syllabus",
-    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/s1.pdf",
+    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
   },
   {
     title: "Semester 2 Syllabus",
-    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/s2.pdf",
+    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
   },
   {
     title: "Semester 3 Syllabus",
-    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/s3.pdf",
+    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
   },
   {
     title: "Semester 4 Syllabus",
-    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/s4.pdf",
+    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
   },
   {
     title: "Semester 3 Audit Course Syllabus",
-    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/audit.pdf",
+    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
   },
 ];
 
@@ -41,7 +41,7 @@ export function CurriculumSection() {
               <CardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
                 <CardTitle className="font-headline text-2xl mb-4 sm:mb-0">{item.title}</CardTitle>
                 <Button asChild>
-                  <a href={item.pdfUrl} download>
+                  <a href={item.pdfUrl} target="_blank" rel="noopener noreferrer">
                     <Download className="mr-2 h-4 w-4" /> Download PDF
                   </a>
                 </Button>
