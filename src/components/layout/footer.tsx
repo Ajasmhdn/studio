@@ -68,7 +68,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-border/50 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; <CurrentYear /> TKMCE AI Hub. All Rights Reserved.</p>
+          <p>&copy; <CurrentYear /> AITKMCE. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
