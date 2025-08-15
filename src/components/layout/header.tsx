@@ -57,15 +57,8 @@ const navLinks = [
   },
   { href: '/publications', label: 'Publications' },
   { href: '/projects', label: 'Projects' },
-  {
-    href: '/achievements',
-    label: 'MoU & Achievements',
-    dropdown: [
-      { href: '/mou', label: 'MoU', icon: Handshake },
-      { href: '/achievements#placements', label: 'Placements', icon: Trophy },
-      { href: '/achievements#students', label: 'Students', icon: Users },
-    ],
-  },
+  { href: '/mou', label: 'MoU' },
+  { href: '/achievements', label: 'Placements' },
   {
     href: '/events',
     label: 'Events',
