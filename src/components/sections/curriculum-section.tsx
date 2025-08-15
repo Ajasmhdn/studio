@@ -1,85 +1,64 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download } from "lucide-react";
-import type { Curriculum } from "@/lib/types";
 
-const curriculumData: Curriculum[] = [
+const syllabusData = [
   {
-    id: 'sem1',
-    title: 'Semester 1 & 2 (First Year)',
-    items: [
-      { name: 'Introduction to AI', url: '#' },
-      { name: 'Programming for AI', url: '#' },
-      { name: 'Calculus & Linear Algebra', url: '#' },
-    ],
+    title: "Semester 1 Syllabus",
+    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/s1.pdf?alt=media&token=a8408f65-271d-4113-913a-52d312521921",
   },
   {
-    id: 'sem3',
-    title: 'Semester 3 & 4 (Second Year)',
-    items: [
-      { name: 'Data Structures & Algorithms', url: '#' },
-      { name: 'Machine Learning Fundamentals', url: '#' },
-      { name: 'Probability & Statistics', url: '#' },
-    ],
+    title: "Semester 2 Syllabus",
+    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/s2.pdf?alt=media&token=8e9c4b77-3e61-4c74-a09e-71c1b1c31238",
   },
   {
-    id: 'sem5',
-    title: 'Semester 5 & 6 (Third Year)',
-    items: [
-      { name: 'Deep Learning', url: '#' },
-      { name: 'Natural Language Processing', url: '#' },
-      { name: 'Computer Vision', url: '#' },
-    ],
+    title: "Semester 3 Syllabus",
+    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/s3.pdf?alt=media&token=5623098e-49c2-4809-ac2e-c5c2a1c02824",
   },
-    {
-    id: 'sem7',
-    title: 'Semester 7 & 8 (Fourth Year)',
-    items: [
-      { name: 'Reinforcement Learning', url: '#' },
-      { name: 'AI Ethics and Governance', url: '#' },
-      { name: 'Final Year Project', url: '#' },
-    ],
+  {
+    title: "Semester 4 Syllabus",
+    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/s4.pdf?alt=media&token=36239126-72d1-4d37-9759-4d834a317498",
+  },
+  {
+    title: "Semester 3 Audit Course Syllabus",
+    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/audit.pdf?alt=media&token=80a08d24-3453-4853-930b-29777558667a",
   },
 ];
 
 export function CurriculumSection() {
   return (
-    <section id="materials" className="py-16 lg:py-24">
+    <section id="curriculum" className="py-16 lg:py-24">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">Curriculum & Materials</h2>
+          <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">Syllabus & Curriculum</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Access course materials, syllabi, and resources for your AI journey.
+            M.Tech Artificial Intelligence (2022 Scheme) Curriculum
           </p>
         </div>
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible defaultValue="sem1" className="w-full">
-            {curriculumData.map((semester) => (
-              <AccordionItem key={semester.id} value={semester.id}>
-                <AccordionTrigger className="text-lg font-medium hover:no-underline">{semester.title}</AccordionTrigger>
-                <AccordionContent>
-                  <ul className="space-y-3 pt-2">
-                    {semester.items.map((item) => (
-                      <li key={item.name} className="flex items-center justify-between p-3 rounded-md border bg-card/50">
-                        <span className="font-medium">{item.name}</span>
-                        <Button asChild variant="ghost" size="icon">
-                          <a href={item.url} download>
-                            <Download className="h-5 w-5 text-muted-foreground" />
-                            <span className="sr-only">Download {item.name}</span>
-                          </a>
-                        </Button>
-                      </li>
-                    ))}
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <div className="space-y-12 max-w-4xl mx-auto">
+          {syllabusData.map((item, index) => (
+            <Card key={index}>
+              <CardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                <CardTitle className="font-headline text-2xl mb-4 sm:mb-0">{item.title}</CardTitle>
+                <Button asChild>
+                  <a href={item.pdfUrl} download>
+                    <Download className="mr-2 h-4 w-4" /> Download PDF
+                  </a>
+                </Button>
+              </CardHeader>
+              <CardContent>
+                <div className="aspect-[4/3] w-full rounded-md border overflow-hidden">
+                  <iframe
+                    src={item.pdfUrl}
+                    width="100%"
+                    height="100%"
+                    title={item.title}
+                    className="border-0"
+                  ></iframe>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

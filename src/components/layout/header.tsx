@@ -46,10 +46,10 @@ const navLinks = [
   },
   {
     href: '/curriculum',
-    label: 'Curriculum',
+    label: 'Syllabus & Curriculum',
     dropdown: [
-      { href: '/curriculum', label: 'Materials', icon: BookOpen },
-      { href: '/syllabus', label: 'Syllabus', icon: FileText },
+      { href: '/curriculum', label: 'Syllabus PDF', icon: BookOpen },
+      { href: '/syllabus', label: 'Detailed Syllabus', icon: FileText },
     ],
   },
   { href: '/publications', label: 'Publications' },
