@@ -99,7 +99,7 @@ export function FacultySection() {
           </div>
         </div>
       </section>
-      <section id="associating-faculty" className="py-16 lg:py-24 bg-secondary">
+      <section id="honorary-faculty" className="py-16 lg:py-24 bg-secondary">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl text-secondary-foreground">Honorary Professor</h2>

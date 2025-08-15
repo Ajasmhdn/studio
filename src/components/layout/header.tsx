@@ -40,8 +40,8 @@ const navLinks = [
     href: '/faculty',
     label: 'Faculty',
     dropdown: [
-      { href: '/faculty#faculty', label: 'Faculty', icon: Users },
-      { href: '/faculty#associating-faculty', label: 'Associates', icon: Building2 },
+      { href: '/faculty', label: 'Faculty', icon: Users },
+      { href: '/associates', label: 'Associates', icon: Building2 },
     ],
   },
   {
