@@ -5,23 +5,23 @@ import { Download } from "lucide-react";
 const syllabusData = [
   {
     title: "Semester 1 Syllabus",
-    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
+    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
   },
   {
     title: "Semester 2 Syllabus",
-    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
+    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
   },
   {
     title: "Semester 3 Syllabus",
-    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
+    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
   },
   {
     title: "Semester 4 Syllabus",
-    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
+    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
   },
   {
     title: "Semester 3 Audit Course Syllabus",
-    pdfUrl: "https://smallpdf.com/share-document#r=result&t=37ea31aacb67531b7d1e494b330b597a&i=share",
+    pdfUrl: "https://drive.google.com/file/d/1d7fEu0aGDrJtONed__aMB_3ZZhEVYX0j/preview",
   },
 ];
 
