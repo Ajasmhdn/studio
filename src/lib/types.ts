@@ -19,11 +19,13 @@ export interface Curriculum {
 
 export interface Publication {
   id: number;
+  type: 'journal' | 'conference' | 'accepted' | 'whitepaper';
   authors: string;
   title: string;
-  source: string; // Journal or conference name
-  year: number;
+  venue: string; // Journal or conference name
+  year: number; // 0 for items without a specific year like 'accepted'
   link: string;
+  notes?: string; // For indexing, impact factor, etc.
 }
 
 export interface Project {
