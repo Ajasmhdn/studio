@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   // Ignore ESLint errors during builds (optional)
   eslint: {
     ignoreDuringBuilds: true,
-f  },
+  },
   // Remote image configuration for Next.js Image component
   images: {
     remotePatterns: [
