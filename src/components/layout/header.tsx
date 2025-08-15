@@ -9,7 +9,6 @@ import {
   BookOpen,
   FileText,
   Lightbulb,
-  Trophy,
   Handshake,
   Calendar,
   Newspaper,
@@ -73,7 +72,7 @@ const navLinks = [
     label: 'Spotlight',
     dropdown: [
       { href: '/events', label: 'Events', icon: Calendar },
-      { href: '/events#in-news', label: 'In News', icon: Newspaper },
+      { href: '/in-news', label: 'In News', icon: Newspaper },
       { href: '/events#workshops', label: 'Workshops', icon: Presentation },
     ],
   },
