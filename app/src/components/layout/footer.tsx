@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Logo } from './logo';
+import { CurrentYear } from '../current-year';
 
 const socialLinks = [
   { 
@@ -130,7 +131,7 @@ export function Footer() {
 
         {/* Footer Bottom */}
         <div className="mt-8 border-t border-border/50 pt-8 text-center text-sm text-muted-foreground">
-          <p>Centre for Artificial Intelligence, TKMCE &copy; {new Date().getFullYear()}. All rights reserved.</p>
+          <p>Centre for Artificial Intelligence, TKMCE &copy; <CurrentYear />. All rights reserved.</p>
         </div>
       </div>
     </footer>
