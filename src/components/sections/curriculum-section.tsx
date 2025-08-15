@@ -5,23 +5,23 @@ import { Download } from "lucide-react";
 const syllabusData = [
   {
     title: "Semester 1 Syllabus",
-    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/s1.pdf?alt=media&token=a8408f65-271d-4113-913a-52d312521921",
+    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/s1.pdf",
   },
   {
     title: "Semester 2 Syllabus",
-    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/s2.pdf?alt=media&token=8e9c4b77-3e61-4c74-a09e-71c1b1c31238",
+    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/s2.pdf",
   },
   {
     title: "Semester 3 Syllabus",
-    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/s3.pdf?alt=media&token=5623098e-49c2-4809-ac2e-c5c2a1c02824",
+    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/s3.pdf",
   },
   {
     title: "Semester 4 Syllabus",
-    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/s4.pdf?alt=media&token=36239126-72d1-4d37-9759-4d834a317498",
+    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/s4.pdf",
   },
   {
     title: "Semester 3 Audit Course Syllabus",
-    pdfUrl: "https://firebasestorage.googleapis.com/v0/b/tkmce-ai-hub.appspot.com/o/audit.pdf?alt=media&token=80a08d24-3453-4853-930b-29777558667a",
+    pdfUrl: "https://mtech-ai-curriculum.tiiny.site/audit.pdf",
   },
 ];
 
