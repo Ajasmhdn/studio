@@ -18,6 +18,8 @@ import {
   Download,
   Building2,
   Cpu,
+  GraduationCap,
+  Award,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -57,8 +59,15 @@ const navLinks = [
   },
   { href: '/publications', label: 'Publications' },
   { href: '/projects', label: 'Projects' },
-  { href: '/mou', label: 'MoU' },
-  { href: '/achievements', label: 'Placements' },
+  {
+    href: '#',
+    label: 'Accomplishments',
+    dropdown: [
+      { href: '/mou', label: 'MoU & Consultancy', icon: Handshake },
+      { href: '/achievements', label: 'Placements', icon: GraduationCap },
+      { href: '/student-achievements', label: 'Student Achievements', icon: Award },
+    ],
+  },
   {
     href: '/events',
     label: 'Events',
@@ -173,7 +182,7 @@ export function Header() {
                       {navLinks.map((link) =>
                         link.dropdown ? (
                           <div key={link.label} className="flex flex-col gap-2">
-                            <Link href={link.href} onClick={() => setIsOpen(false)} className="p-2 text-lg rounded-md hover:bg-accent font-semibold">{link.label}</Link>
+                            <span className="p-2 text-lg rounded-md font-semibold">{link.label}</span>
                             <div className="flex flex-col gap-1 pl-4 border-l">
                               {link.dropdown.map(item => (
                                 item.submenu ? (
