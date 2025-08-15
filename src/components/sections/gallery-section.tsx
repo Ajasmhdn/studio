@@ -17,7 +17,6 @@ const galleryImages = Array.from({ length: 15 }, (_, i) => ({
 const videoData = [
   { id: 'dQw4w9WgXcQ', title: 'Campus Tour', dataAiHint: 'university campus drone' },
   { id: '3JZ_D3ELwOQ', title: 'Annual Tech Fest Highlights', dataAiHint: 'tech conference event' },
-  { id: 'y_znM_v2ikI', title: 'Student Project Showcase', dataAiHint: 'student presentation project' },
   { id: 'LXb3EKWsInQ', title: 'A Day in the AI Lab', dataAiHint: 'students coding computer' },
 ];
 
