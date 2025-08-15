@@ -1,3 +1,4 @@
+import React from 'react';
 import type { FacultyMember } from "@/lib/types";
 import { FacultyMemberCard } from "@/components/faculty-member-card";
 import { Separator } from "@/components/ui/separator";
