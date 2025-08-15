@@ -35,7 +35,7 @@ export function MouSection() {
             Our collaborations and consultancy agreements with industry and academic partners.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.name}
