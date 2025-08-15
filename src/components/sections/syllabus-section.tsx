@@ -32,7 +32,7 @@ export function SyllabusSection() {
           </p>
         </div>
         <div className="max-w-4xl mx-auto">
-          <Accordion type="multiple" defaultValue={['sem1']} className="w-full space-y-4">
+          <Accordion type="single" collapsible defaultValue="sem1" className="w-full space-y-4">
             {/* Semester I */}
             <AccordionItem value="sem1">
               <AccordionTrigger className="text-xl font-headline hover:no-underline px-4 bg-secondary rounded-md">
